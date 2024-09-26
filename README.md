@@ -1,4 +1,4 @@
-[![last-commit](https://img.shields.io/github/last-commit/Nisk36/Hackathon)](https://github.com/Nisk36/Hackathon/commits/master)
+[![last-commit](https://img.shields.io/github/last-commit/moyomogi/2024ShirasagiPuzzle)](https://github.com/moyomogi/2024ShirasagiPuzzle/commits/master)
 
 # 2024 白鷺祭 よもぎ班
 
