@@ -16,4 +16,4 @@
 - あ
 - ひ
 - テ
-- ム
+- [komugiR](https://github.com/komugiR?tab=repositories)
