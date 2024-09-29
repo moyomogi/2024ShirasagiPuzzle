@@ -14,6 +14,6 @@
 
 - [moyomogi](https://github.com/moyomogi?tab=repositories)
 - あ
-- ひ
+- [amagiri-010](https://github.com/amagiri-010?tab=repositories)
 - テ
 - [komugiR](https://github.com/komugiR?tab=repositories)
