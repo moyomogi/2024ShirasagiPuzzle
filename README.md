@@ -13,7 +13,7 @@
 ## ###fetch and push test###
 
 - [moyomogi](https://github.com/moyomogi?tab=repositories)
-- あ
+- [Aclarinet](https://github.com/Aclarinet?tab=repositories)
 - [amagiri-010](https://github.com/amagiri-010?tab=repositories)
 - テ
 - [komugiR](https://github.com/komugiR?tab=repositories)
