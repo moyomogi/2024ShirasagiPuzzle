@@ -1,3 +1,4 @@
+# .gitignore とは GitHub 上で共有しないファイルを指定するファイルです
 # This .gitignore file should be placed at the root of your Unity project directory
 #
 # Get latest from https://github.com/github/gitignore/blob/master/Unity.gitignore
@@ -8,7 +9,6 @@
 /[Ll]ogs/
 /[Mm]emoryCaptures/
 /[Oo]bj/
-/[Tt]emp/
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
@@ -58,16 +58,17 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
-*.wav
-*.mp3
 UserSettings/Layouts
 
 # moyomogi
 # Folders
 /.vscode/
+# 共有したくないファイルは  Temp フォルダに入れてください
+/[Tt]emp/
 # ビルドは Build フォルダにて行ってください
 /[Bb]uild/
 
 # Files
 *.sh
+*.py
 input.md
