@@ -5,8 +5,10 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
-namespace Boomerang2DFramework.Framework.EditorHelpers {
-	public static class SuperForms {
+namespace Boomerang2DFramework.Framework.EditorHelpers
+{
+	public static class SuperForms
+	{
 #if UNITY_EDITOR
 		static SuperForms() { }
 
@@ -734,7 +736,7 @@ namespace Boomerang2DFramework.Framework.EditorHelpers {
 			End.Horizontal();
 			return value;
 		}
-		
+
 		public static Vector2 Vector2FieldSingleLine(string label, Vector2 value, int width = 25) {
 			Begin.Horizontal();
 			Label(label, GUILayout.ExpandWidth(true));
@@ -1045,14 +1047,14 @@ namespace Boomerang2DFramework.Framework.EditorHelpers {
 			action();
 			GUILayout.EndVertical();
 		}
-		
+
 
 		public void VerticalBox(Action action, GUIStyle style, params GUILayoutOption[] options) {
 			GUILayout.BeginVertical(new GUIStyle(style), options);
 			action();
 			GUILayout.EndVertical();
 		}
-		
+
 		public void VerticalSubBox(Action action, params GUILayoutOption[] options) {
 			GUILayout.BeginVertical(SuperFormsStyles.SubBoxStyle, options);
 			action();

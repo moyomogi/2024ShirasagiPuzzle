@@ -7918,9 +7918,9 @@
                     "TriggerProperties": "{\"FacingDirection\":2}"
                 },
                 {
-                    "TriggerClass": "Boomerang2DFramework.Framework.Actors.TriggerSystem.Triggers.GameFlagBoolValue, B2DFramework, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
-                    "TriggerPropertyClass": "Boomerang2DFramework.Framework.Actors.TriggerSystem.Triggers.GameFlagBoolValueProperties, B2DFramework, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
-                    "TriggerProperties": "{\"FlagName\":\"canThrowBombs\",\"FlagValue\":true}"
+                    "TriggerClass": "Boomerang2DFramework.Framework.Actors.TriggerSystem.Triggers.GameFlagStringValue, B2DFramework, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                    "TriggerPropertyClass": "Boomerang2DFramework.Framework.Actors.TriggerSystem.Triggers.GameFlagStringValueProperties, B2DFramework, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                    "TriggerProperties": "{\"FlagName\":\"PlayerAbility\",\"FlagValue\":\"Bomb\"}"
                 }
             ],
             "ActorEventBuilders": [
@@ -7964,9 +7964,9 @@
                     "TriggerProperties": "{\"FacingDirection\":3}"
                 },
                 {
-                    "TriggerClass": "Boomerang2DFramework.Framework.Actors.TriggerSystem.Triggers.GameFlagBoolValue, B2DFramework, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
-                    "TriggerPropertyClass": "Boomerang2DFramework.Framework.Actors.TriggerSystem.Triggers.GameFlagBoolValueProperties, B2DFramework, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
-                    "TriggerProperties": "{\"FlagName\":\"canThrowBombs\",\"FlagValue\":true}"
+                    "TriggerClass": "Boomerang2DFramework.Framework.Actors.TriggerSystem.Triggers.GameFlagStringValue, B2DFramework, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                    "TriggerPropertyClass": "Boomerang2DFramework.Framework.Actors.TriggerSystem.Triggers.GameFlagStringValueProperties, B2DFramework, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                    "TriggerProperties": "{\"FlagName\":\"PlayerAbility\",\"FlagValue\":\"Bomb\"}"
                 }
             ],
             "ActorEventBuilders": [

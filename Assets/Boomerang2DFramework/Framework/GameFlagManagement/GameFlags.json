@@ -13,7 +13,12 @@
             "Value": 25.25
         }
     ],
-    "StringFlags": [],
+    "StringFlags": [
+        {
+            "Key": "PlayerAbility",
+            "Value": ""
+        }
+    ],
     "BoolFlags": [
         {
             "Key": "FirstTimePlaying",
@@ -41,6 +46,10 @@
         },
         {
             "Key": "shmupBossDead",
+            "Value": false
+        },
+        {
+            "Key": "canElectrify",
             "Value": false
         }
     ]

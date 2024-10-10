@@ -10,7 +10,9 @@ namespace Boomerang2DFramework.Framework {
 	public class StartDemoGame : MonoBehaviour {
 		private void Start() {
 			Boomerang2D.InitializeFramework();
-			MapManager.LoadMap("demoTown");
+			// MapManager.LoadMap("demoTown");
+			// MapManager.LoadMap("demoForest");
+			MapManager.LoadMap("action1");
 		}
 	}
 }

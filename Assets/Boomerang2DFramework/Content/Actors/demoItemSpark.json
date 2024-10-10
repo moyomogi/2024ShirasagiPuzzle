@@ -1,5 +1,5 @@
 {
-    "Name": "demoItemBomb",
+    "Name": "demoItemSpark",
     "IsPlayer": false,
     "SpriteWidth": 8.0,
     "SpriteHeight": 8.0,
@@ -9,7 +9,7 @@
             "Name": "idle",
             "Class": "Boomerang2DFramework.Framework.Actors.States.Idle, B2DFramework, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
             "PropertiesClass": "Boomerang2DFramework.Framework.Actors.States.IdleProperties, B2DFramework, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
-            "Properties": "{\"CanBeGrounded\":true,\"CollidesWithGeometry\":true,\"CollidesWithActors\":true,\"OverlapsGeometry\":true,\"OverlapsOtherActors\":true,\"OverlapsWeapons\":true,\"Deceleration\":{\"StartValue\":1.5,\"Entries\":[],\"ClampMin\":false,\"ClampMinValue\":0.0,\"ClampMax\":false,\"ClampMaxValue\":0.0},\"GlueHeight\":{\"StartValue\":0.4000000059604645,\"Entries\":[],\"ClampMin\":false,\"ClampMinValue\":0.0,\"ClampMax\":false,\"ClampMaxValue\":0.0}}",
+            "Properties": "{\"CanBeGrounded\":true,\"CollidesWithGeometry\":true,\"CollidesWithActors\":true,\"OverlapsGeometry\":true,\"OverlapsOtherActors\":true,\"OverlapsWeapons\":true,\"Deceleration\":{\"StartValue\":1.5,\"Entries\":[],\"ClampMin\":false,\"ClampMinValue\":0.0,\"ClampMax\":false,\"ClampMaxValue\":0.0},\"GlueHeight\":{\"StartValue\":0.0,\"Entries\":[],\"ClampMin\":false,\"ClampMinValue\":0.0,\"ClampMax\":false,\"ClampMaxValue\":0.0}}",
             "TransitionTriggers": [],
             "RandomTransitionTriggers": [],
             "ModificationTriggers": [],
@@ -164,7 +164,7 @@
                             "ParticleEffectProperties": []
                         },
                         {
-                            "SpriteFrame": 1,
+                            "SpriteFrame": 0,
                             "Duration": 0.20000000298023225,
                             "FlipHorizontal": false,
                             "FlipVertical": false,
@@ -215,31 +215,10 @@
             ],
             "SoundEffects": [],
             "EditorPosition": {
-                "x": 60.0,
-                "y": 60.0
+                "x": 30.0,
+                "y": 30.0
             },
-            "StateEntryActorEvents": [
-                {
-                    "ActorTriggerBuilders": [
-                        {
-                            "TriggerClass": "Boomerang2DFramework.Framework.Actors.TriggerSystem.Triggers.GameFlagBoolValue, B2DFramework, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
-                            "TriggerPropertyClass": "Boomerang2DFramework.Framework.Actors.TriggerSystem.Triggers.GameFlagBoolValueProperties, B2DFramework, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
-                            "TriggerProperties": "{\"FlagName\":\"canThrowBombs\",\"FlagValue\":true}"
-                        }
-                    ],
-                    "ActorEventBuilders": [
-                        {
-                            "StartTime": 0.0,
-                            "AffectFilteredActors": false,
-                            "ActorEventClass": "Boomerang2DFramework.Framework.Actors.ActorEvents.Events.KillActor, B2DFramework, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
-                            "ActorEventPropertiesClass": "Boomerang2DFramework.Framework.Actors.ActorEvents.Events.KillActorProperties, B2DFramework, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
-                            "ActorEventProperties": "{}"
-                        }
-                    ],
-                    "ActorElseEventBuilders": [],
-                    "Triggers": []
-                }
-            ],
+            "StateEntryActorEvents": [],
             "StateExitActorEvents": []
         }
     ],
@@ -297,16 +276,16 @@
                     "FilterProperties": "{\"UseAnySelfFlag\":true,\"SelfFlag\":\"\",\"UseAnyOtherFlag\":false,\"OtherFlag\":\"Player\"}"
                 }
             ],
-            "FoundActorsComparison": 2,
-            "FoundActorsCount": 1,
+            "FoundActorsComparison": 0,
+            "FoundActorsCount": 0,
             "ActorTriggerBuilders": [],
             "ActorEventBuilders": [
                 {
                     "StartTime": 0.0,
-                    "AffectFilteredActors": true,
+                    "AffectFilteredActors": false,
                     "ActorEventClass": "Boomerang2DFramework.Framework.Actors.ActorEvents.Events.SetGameFlagString, B2DFramework, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                     "ActorEventPropertiesClass": "Boomerang2DFramework.Framework.Actors.ActorEvents.Events.SetGameFlagStringProperties, B2DFramework, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
-                    "ActorEventProperties": "{\"GameFlagName\":\"PlayerAbility\",\"GameFlagValue\":\"Bomb\"}"
+                    "ActorEventProperties": "{\"GameFlagName\":\"PlayerAbility\",\"GameFlagValue\":\"Spark\"}"
                 },
                 {
                     "StartTime": 0.0,

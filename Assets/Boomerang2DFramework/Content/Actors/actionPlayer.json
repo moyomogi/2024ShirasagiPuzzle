@@ -1,0 +1,1443 @@
+{
+    "Name": "actionPlayer",
+    "IsPlayer": true,
+    "SpriteWidth": 24.0,
+    "SpriteHeight": 26.0,
+    "ObeysChunking": false,
+    "States": [
+        {
+            "Name": "walk",
+            "Class": "Boomerang2DFramework.Framework.Actors.States.Idle, B2DFramework, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "PropertiesClass": "Boomerang2DFramework.Framework.Actors.States.IdleProperties, B2DFramework, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": "{\"CanBeGrounded\":true,\"CollidesWithGeometry\":true,\"CollidesWithActors\":true,\"OverlapsGeometry\":true,\"OverlapsOtherActors\":true,\"OverlapsWeapons\":true,\"Deceleration\":{\"StartValue\":1.5,\"Entries\":[],\"ClampMin\":false,\"ClampMinValue\":0.0,\"ClampMax\":false,\"ClampMaxValue\":0.0},\"GlueHeight\":{\"StartValue\":0.0,\"Entries\":[],\"ClampMin\":false,\"ClampMinValue\":0.0,\"ClampMax\":false,\"ClampMaxValue\":0.0}}",
+            "TransitionTriggers": [
+                {
+                    "NextState": "idle",
+                    "ActorTriggerBuilders": [
+                        {
+                            "TriggerClass": "Boomerang2DFramework.Framework.Actors.TriggerSystem.Triggers.UserInputNotHeld, B2DFramework, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                            "TriggerPropertyClass": "Boomerang2DFramework.Framework.Actors.TriggerSystem.Triggers.UserInputNotHeldProperties, B2DFramework, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                            "TriggerProperties": "{\"InputType\":1,\"InputValue\":\"Horizontal+\"}"
+                        },
+                        {
+                            "TriggerClass": "Boomerang2DFramework.Framework.Actors.TriggerSystem.Triggers.UserInputNotHeld, B2DFramework, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                            "TriggerPropertyClass": "Boomerang2DFramework.Framework.Actors.TriggerSystem.Triggers.UserInputNotHeldProperties, B2DFramework, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                            "TriggerProperties": "{\"InputType\":1,\"InputValue\":\"Horizontal-\"}"
+                        }
+                    ]
+                }
+            ],
+            "RandomTransitionTriggers": [],
+            "ModificationTriggers": [],
+            "WeaponTriggers": [],
+            "Animations": [
+                {
+                    "Name": "walk_right",
+                    "BoundToGlobalTimeManager": false,
+                    "IndefinitelyLoops": true,
+                    "FixedLoopCount": 0,
+                    "FinalFrameAfterLoops": 0,
+                    "StartOnExistingSpriteFrame": false,
+                    "BoundToWeaponDuration": false,
+                    "WeaponBoundTo": "",
+                    "AnimationFrames": [
+                        {
+                            "SpriteFrame": 70,
+                            "Duration": 0.10000000149011612,
+                            "FlipHorizontal": false,
+                            "FlipVertical": false,
+                            "Rotate": false,
+                            "BoundingBoxProperties": [
+                                {
+                                    "Enabled": true,
+                                    "Size": {
+                                        "x": 7.0,
+                                        "y": 21.0
+                                    },
+                                    "Offset": {
+                                        "x": 2.0,
+                                        "y": -2.0
+                                    },
+                                    "RayCastUp": true,
+                                    "RayCountUp": 2,
+                                    "RayLengthUp": 2.0,
+                                    "RayInsetUp": 0.0,
+                                    "RayInsetFirstUp": 0.0,
+                                    "RayInsetLastUp": 0.0,
+                                    "RayCastRight": true,
+                                    "RayCountRight": 2,
+                                    "RayLengthRight": 2.0,
+                                    "RayInsetRight": 0.0,
+                                    "RayInsetFirstRight": 0.0,
+                                    "RayInsetLastRight": 0.0,
+                                    "RayCastDown": true,
+                                    "RayCountDown": 2,
+                                    "RayLengthDown": 2.0,
+                                    "RayInsetDown": 0.0,
+                                    "RayInsetFirstDown": 0.0,
+                                    "RayInsetLastDown": 0.0,
+                                    "RayCastLeft": true,
+                                    "RayCountLeft": 2,
+                                    "RayLengthLeft": 2.0,
+                                    "RayInsetLeft": 0.0,
+                                    "RayInsetFirstLeft": 0.0,
+                                    "RayInsetLastLeft": 0.0,
+                                    "Flags": [
+                                        "Player"
+                                    ]
+                                }
+                            ],
+                            "ParticleEffectProperties": []
+                        },
+                        {
+                            "SpriteFrame": 71,
+                            "Duration": 0.10000000149011612,
+                            "FlipHorizontal": false,
+                            "FlipVertical": false,
+                            "Rotate": false,
+                            "BoundingBoxProperties": [
+                                {
+                                    "Enabled": true,
+                                    "Size": {
+                                        "x": 7.0,
+                                        "y": 21.0
+                                    },
+                                    "Offset": {
+                                        "x": 2.0,
+                                        "y": -2.0
+                                    },
+                                    "RayCastUp": true,
+                                    "RayCountUp": 2,
+                                    "RayLengthUp": 2.0,
+                                    "RayInsetUp": 0.0,
+                                    "RayInsetFirstUp": 0.0,
+                                    "RayInsetLastUp": 0.0,
+                                    "RayCastRight": true,
+                                    "RayCountRight": 2,
+                                    "RayLengthRight": 2.0,
+                                    "RayInsetRight": 0.0,
+                                    "RayInsetFirstRight": 0.0,
+                                    "RayInsetLastRight": 0.0,
+                                    "RayCastDown": true,
+                                    "RayCountDown": 2,
+                                    "RayLengthDown": 2.0,
+                                    "RayInsetDown": 0.0,
+                                    "RayInsetFirstDown": 0.0,
+                                    "RayInsetLastDown": 0.0,
+                                    "RayCastLeft": true,
+                                    "RayCountLeft": 2,
+                                    "RayLengthLeft": 2.0,
+                                    "RayInsetLeft": 0.0,
+                                    "RayInsetFirstLeft": 0.0,
+                                    "RayInsetLastLeft": 0.0,
+                                    "Flags": [
+                                        "Player"
+                                    ]
+                                }
+                            ],
+                            "ParticleEffectProperties": []
+                        },
+                        {
+                            "SpriteFrame": 72,
+                            "Duration": 0.10000000149011612,
+                            "FlipHorizontal": false,
+                            "FlipVertical": false,
+                            "Rotate": false,
+                            "BoundingBoxProperties": [
+                                {
+                                    "Enabled": true,
+                                    "Size": {
+                                        "x": 7.0,
+                                        "y": 21.0
+                                    },
+                                    "Offset": {
+                                        "x": 2.0,
+                                        "y": -2.0
+                                    },
+                                    "RayCastUp": true,
+                                    "RayCountUp": 2,
+                                    "RayLengthUp": 2.0,
+                                    "RayInsetUp": 0.0,
+                                    "RayInsetFirstUp": 0.0,
+                                    "RayInsetLastUp": 0.0,
+                                    "RayCastRight": true,
+                                    "RayCountRight": 2,
+                                    "RayLengthRight": 2.0,
+                                    "RayInsetRight": 0.0,
+                                    "RayInsetFirstRight": 0.0,
+                                    "RayInsetLastRight": 0.0,
+                                    "RayCastDown": true,
+                                    "RayCountDown": 2,
+                                    "RayLengthDown": 2.0,
+                                    "RayInsetDown": 0.0,
+                                    "RayInsetFirstDown": 0.0,
+                                    "RayInsetLastDown": 0.0,
+                                    "RayCastLeft": true,
+                                    "RayCountLeft": 2,
+                                    "RayLengthLeft": 2.0,
+                                    "RayInsetLeft": 0.0,
+                                    "RayInsetFirstLeft": 0.0,
+                                    "RayInsetLastLeft": 0.0,
+                                    "Flags": [
+                                        "Player"
+                                    ]
+                                }
+                            ],
+                            "ParticleEffectProperties": []
+                        },
+                        {
+                            "SpriteFrame": 73,
+                            "Duration": 0.10000000149011612,
+                            "FlipHorizontal": false,
+                            "FlipVertical": false,
+                            "Rotate": false,
+                            "BoundingBoxProperties": [
+                                {
+                                    "Enabled": true,
+                                    "Size": {
+                                        "x": 7.0,
+                                        "y": 21.0
+                                    },
+                                    "Offset": {
+                                        "x": 2.0,
+                                        "y": -2.0
+                                    },
+                                    "RayCastUp": true,
+                                    "RayCountUp": 2,
+                                    "RayLengthUp": 2.0,
+                                    "RayInsetUp": 0.0,
+                                    "RayInsetFirstUp": 0.0,
+                                    "RayInsetLastUp": 0.0,
+                                    "RayCastRight": true,
+                                    "RayCountRight": 2,
+                                    "RayLengthRight": 2.0,
+                                    "RayInsetRight": 0.0,
+                                    "RayInsetFirstRight": 0.0,
+                                    "RayInsetLastRight": 0.0,
+                                    "RayCastDown": true,
+                                    "RayCountDown": 2,
+                                    "RayLengthDown": 2.0,
+                                    "RayInsetDown": 0.0,
+                                    "RayInsetFirstDown": 0.0,
+                                    "RayInsetLastDown": 0.0,
+                                    "RayCastLeft": true,
+                                    "RayCountLeft": 2,
+                                    "RayLengthLeft": 2.0,
+                                    "RayInsetLeft": 0.0,
+                                    "RayInsetFirstLeft": 0.0,
+                                    "RayInsetLastLeft": 0.0,
+                                    "Flags": [
+                                        "Player"
+                                    ]
+                                }
+                            ],
+                            "ParticleEffectProperties": []
+                        },
+                        {
+                            "SpriteFrame": 74,
+                            "Duration": 0.10000000149011612,
+                            "FlipHorizontal": false,
+                            "FlipVertical": false,
+                            "Rotate": false,
+                            "BoundingBoxProperties": [
+                                {
+                                    "Enabled": true,
+                                    "Size": {
+                                        "x": 7.0,
+                                        "y": 21.0
+                                    },
+                                    "Offset": {
+                                        "x": 2.0,
+                                        "y": -2.0
+                                    },
+                                    "RayCastUp": true,
+                                    "RayCountUp": 2,
+                                    "RayLengthUp": 2.0,
+                                    "RayInsetUp": 0.0,
+                                    "RayInsetFirstUp": 0.0,
+                                    "RayInsetLastUp": 0.0,
+                                    "RayCastRight": true,
+                                    "RayCountRight": 2,
+                                    "RayLengthRight": 2.0,
+                                    "RayInsetRight": 0.0,
+                                    "RayInsetFirstRight": 0.0,
+                                    "RayInsetLastRight": 0.0,
+                                    "RayCastDown": true,
+                                    "RayCountDown": 2,
+                                    "RayLengthDown": 2.0,
+                                    "RayInsetDown": 0.0,
+                                    "RayInsetFirstDown": 0.0,
+                                    "RayInsetLastDown": 0.0,
+                                    "RayCastLeft": true,
+                                    "RayCountLeft": 2,
+                                    "RayLengthLeft": 2.0,
+                                    "RayInsetLeft": 0.0,
+                                    "RayInsetFirstLeft": 0.0,
+                                    "RayInsetLastLeft": 0.0,
+                                    "Flags": [
+                                        "Player"
+                                    ]
+                                }
+                            ],
+                            "ParticleEffectProperties": []
+                        },
+                        {
+                            "SpriteFrame": 75,
+                            "Duration": 0.10000000149011612,
+                            "FlipHorizontal": false,
+                            "FlipVertical": false,
+                            "Rotate": false,
+                            "BoundingBoxProperties": [
+                                {
+                                    "Enabled": true,
+                                    "Size": {
+                                        "x": 7.0,
+                                        "y": 21.0
+                                    },
+                                    "Offset": {
+                                        "x": 2.0,
+                                        "y": -2.0
+                                    },
+                                    "RayCastUp": true,
+                                    "RayCountUp": 2,
+                                    "RayLengthUp": 2.0,
+                                    "RayInsetUp": 0.0,
+                                    "RayInsetFirstUp": 0.0,
+                                    "RayInsetLastUp": 0.0,
+                                    "RayCastRight": true,
+                                    "RayCountRight": 2,
+                                    "RayLengthRight": 2.0,
+                                    "RayInsetRight": 0.0,
+                                    "RayInsetFirstRight": 0.0,
+                                    "RayInsetLastRight": 0.0,
+                                    "RayCastDown": true,
+                                    "RayCountDown": 2,
+                                    "RayLengthDown": 2.0,
+                                    "RayInsetDown": 0.0,
+                                    "RayInsetFirstDown": 0.0,
+                                    "RayInsetLastDown": 0.0,
+                                    "RayCastLeft": true,
+                                    "RayCountLeft": 2,
+                                    "RayLengthLeft": 2.0,
+                                    "RayInsetLeft": 0.0,
+                                    "RayInsetFirstLeft": 0.0,
+                                    "RayInsetLastLeft": 0.0,
+                                    "Flags": [
+                                        "Player"
+                                    ]
+                                }
+                            ],
+                            "ParticleEffectProperties": []
+                        },
+                        {
+                            "SpriteFrame": 76,
+                            "Duration": 0.10000000149011612,
+                            "FlipHorizontal": false,
+                            "FlipVertical": false,
+                            "Rotate": false,
+                            "BoundingBoxProperties": [
+                                {
+                                    "Enabled": true,
+                                    "Size": {
+                                        "x": 7.0,
+                                        "y": 21.0
+                                    },
+                                    "Offset": {
+                                        "x": 2.0,
+                                        "y": -2.0
+                                    },
+                                    "RayCastUp": true,
+                                    "RayCountUp": 2,
+                                    "RayLengthUp": 2.0,
+                                    "RayInsetUp": 0.0,
+                                    "RayInsetFirstUp": 0.0,
+                                    "RayInsetLastUp": 0.0,
+                                    "RayCastRight": true,
+                                    "RayCountRight": 2,
+                                    "RayLengthRight": 2.0,
+                                    "RayInsetRight": 0.0,
+                                    "RayInsetFirstRight": 0.0,
+                                    "RayInsetLastRight": 0.0,
+                                    "RayCastDown": true,
+                                    "RayCountDown": 2,
+                                    "RayLengthDown": 2.0,
+                                    "RayInsetDown": 0.0,
+                                    "RayInsetFirstDown": 0.0,
+                                    "RayInsetLastDown": 0.0,
+                                    "RayCastLeft": true,
+                                    "RayCountLeft": 2,
+                                    "RayLengthLeft": 2.0,
+                                    "RayInsetLeft": 0.0,
+                                    "RayInsetFirstLeft": 0.0,
+                                    "RayInsetLastLeft": 0.0,
+                                    "Flags": [
+                                        "Player"
+                                    ]
+                                }
+                            ],
+                            "ParticleEffectProperties": []
+                        },
+                        {
+                            "SpriteFrame": 77,
+                            "Duration": 0.10000000149011612,
+                            "FlipHorizontal": false,
+                            "FlipVertical": false,
+                            "Rotate": false,
+                            "BoundingBoxProperties": [
+                                {
+                                    "Enabled": true,
+                                    "Size": {
+                                        "x": 7.0,
+                                        "y": 21.0
+                                    },
+                                    "Offset": {
+                                        "x": 2.0,
+                                        "y": -2.0
+                                    },
+                                    "RayCastUp": true,
+                                    "RayCountUp": 2,
+                                    "RayLengthUp": 2.0,
+                                    "RayInsetUp": 0.0,
+                                    "RayInsetFirstUp": 0.0,
+                                    "RayInsetLastUp": 0.0,
+                                    "RayCastRight": true,
+                                    "RayCountRight": 2,
+                                    "RayLengthRight": 2.0,
+                                    "RayInsetRight": 0.0,
+                                    "RayInsetFirstRight": 0.0,
+                                    "RayInsetLastRight": 0.0,
+                                    "RayCastDown": true,
+                                    "RayCountDown": 2,
+                                    "RayLengthDown": 2.0,
+                                    "RayInsetDown": 0.0,
+                                    "RayInsetFirstDown": 0.0,
+                                    "RayInsetLastDown": 0.0,
+                                    "RayCastLeft": true,
+                                    "RayCountLeft": 2,
+                                    "RayLengthLeft": 2.0,
+                                    "RayInsetLeft": 0.0,
+                                    "RayInsetFirstLeft": 0.0,
+                                    "RayInsetLastLeft": 0.0,
+                                    "Flags": [
+                                        "Player"
+                                    ]
+                                }
+                            ],
+                            "ParticleEffectProperties": []
+                        },
+                        {
+                            "SpriteFrame": 78,
+                            "Duration": 0.10000000149011612,
+                            "FlipHorizontal": false,
+                            "FlipVertical": false,
+                            "Rotate": false,
+                            "BoundingBoxProperties": [
+                                {
+                                    "Enabled": true,
+                                    "Size": {
+                                        "x": 7.0,
+                                        "y": 21.0
+                                    },
+                                    "Offset": {
+                                        "x": 2.0,
+                                        "y": -2.0
+                                    },
+                                    "RayCastUp": true,
+                                    "RayCountUp": 2,
+                                    "RayLengthUp": 2.0,
+                                    "RayInsetUp": 0.0,
+                                    "RayInsetFirstUp": 0.0,
+                                    "RayInsetLastUp": 0.0,
+                                    "RayCastRight": true,
+                                    "RayCountRight": 2,
+                                    "RayLengthRight": 2.0,
+                                    "RayInsetRight": 0.0,
+                                    "RayInsetFirstRight": 0.0,
+                                    "RayInsetLastRight": 0.0,
+                                    "RayCastDown": true,
+                                    "RayCountDown": 2,
+                                    "RayLengthDown": 2.0,
+                                    "RayInsetDown": 0.0,
+                                    "RayInsetFirstDown": 0.0,
+                                    "RayInsetLastDown": 0.0,
+                                    "RayCastLeft": true,
+                                    "RayCountLeft": 2,
+                                    "RayLengthLeft": 2.0,
+                                    "RayInsetLeft": 0.0,
+                                    "RayInsetFirstLeft": 0.0,
+                                    "RayInsetLastLeft": 0.0,
+                                    "Flags": [
+                                        "Player"
+                                    ]
+                                }
+                            ],
+                            "ParticleEffectProperties": []
+                        },
+                        {
+                            "SpriteFrame": 79,
+                            "Duration": 0.10000000149011612,
+                            "FlipHorizontal": false,
+                            "FlipVertical": false,
+                            "Rotate": false,
+                            "BoundingBoxProperties": [
+                                {
+                                    "Enabled": true,
+                                    "Size": {
+                                        "x": 7.0,
+                                        "y": 21.0
+                                    },
+                                    "Offset": {
+                                        "x": 2.0,
+                                        "y": -2.0
+                                    },
+                                    "RayCastUp": true,
+                                    "RayCountUp": 2,
+                                    "RayLengthUp": 2.0,
+                                    "RayInsetUp": 0.0,
+                                    "RayInsetFirstUp": 0.0,
+                                    "RayInsetLastUp": 0.0,
+                                    "RayCastRight": true,
+                                    "RayCountRight": 2,
+                                    "RayLengthRight": 2.0,
+                                    "RayInsetRight": 0.0,
+                                    "RayInsetFirstRight": 0.0,
+                                    "RayInsetLastRight": 0.0,
+                                    "RayCastDown": true,
+                                    "RayCountDown": 2,
+                                    "RayLengthDown": 2.0,
+                                    "RayInsetDown": 0.0,
+                                    "RayInsetFirstDown": 0.0,
+                                    "RayInsetLastDown": 0.0,
+                                    "RayCastLeft": true,
+                                    "RayCountLeft": 2,
+                                    "RayLengthLeft": 2.0,
+                                    "RayInsetLeft": 0.0,
+                                    "RayInsetFirstLeft": 0.0,
+                                    "RayInsetLastLeft": 0.0,
+                                    "Flags": [
+                                        "Player"
+                                    ]
+                                }
+                            ],
+                            "ParticleEffectProperties": []
+                        }
+                    ],
+                    "AnimationConditions": []
+                },
+                {
+                    "Name": "walk_left",
+                    "BoundToGlobalTimeManager": false,
+                    "IndefinitelyLoops": true,
+                    "FixedLoopCount": 0,
+                    "FinalFrameAfterLoops": 0,
+                    "StartOnExistingSpriteFrame": false,
+                    "BoundToWeaponDuration": false,
+                    "WeaponBoundTo": "",
+                    "AnimationFrames": [
+                        {
+                            "SpriteFrame": 70,
+                            "Duration": 0.10000000149011612,
+                            "FlipHorizontal": true,
+                            "FlipVertical": false,
+                            "Rotate": false,
+                            "BoundingBoxProperties": [
+                                {
+                                    "Enabled": true,
+                                    "Size": {
+                                        "x": 7.0,
+                                        "y": 21.0
+                                    },
+                                    "Offset": {
+                                        "x": -2.0,
+                                        "y": -2.0
+                                    },
+                                    "RayCastUp": true,
+                                    "RayCountUp": 2,
+                                    "RayLengthUp": 2.0,
+                                    "RayInsetUp": 0.0,
+                                    "RayInsetFirstUp": 0.0,
+                                    "RayInsetLastUp": 0.0,
+                                    "RayCastRight": true,
+                                    "RayCountRight": 2,
+                                    "RayLengthRight": 2.0,
+                                    "RayInsetRight": 0.0,
+                                    "RayInsetFirstRight": 0.0,
+                                    "RayInsetLastRight": 0.0,
+                                    "RayCastDown": true,
+                                    "RayCountDown": 2,
+                                    "RayLengthDown": 2.0,
+                                    "RayInsetDown": 0.0,
+                                    "RayInsetFirstDown": 0.0,
+                                    "RayInsetLastDown": 0.0,
+                                    "RayCastLeft": true,
+                                    "RayCountLeft": 2,
+                                    "RayLengthLeft": 2.0,
+                                    "RayInsetLeft": 0.0,
+                                    "RayInsetFirstLeft": 0.0,
+                                    "RayInsetLastLeft": 0.0,
+                                    "Flags": [
+                                        "Player"
+                                    ]
+                                }
+                            ],
+                            "ParticleEffectProperties": []
+                        },
+                        {
+                            "SpriteFrame": 71,
+                            "Duration": 0.10000000149011612,
+                            "FlipHorizontal": true,
+                            "FlipVertical": false,
+                            "Rotate": false,
+                            "BoundingBoxProperties": [
+                                {
+                                    "Enabled": true,
+                                    "Size": {
+                                        "x": 7.0,
+                                        "y": 21.0
+                                    },
+                                    "Offset": {
+                                        "x": -2.0,
+                                        "y": -2.0
+                                    },
+                                    "RayCastUp": true,
+                                    "RayCountUp": 2,
+                                    "RayLengthUp": 2.0,
+                                    "RayInsetUp": 0.0,
+                                    "RayInsetFirstUp": 0.0,
+                                    "RayInsetLastUp": 0.0,
+                                    "RayCastRight": true,
+                                    "RayCountRight": 2,
+                                    "RayLengthRight": 2.0,
+                                    "RayInsetRight": 0.0,
+                                    "RayInsetFirstRight": 0.0,
+                                    "RayInsetLastRight": 0.0,
+                                    "RayCastDown": true,
+                                    "RayCountDown": 2,
+                                    "RayLengthDown": 2.0,
+                                    "RayInsetDown": 0.0,
+                                    "RayInsetFirstDown": 0.0,
+                                    "RayInsetLastDown": 0.0,
+                                    "RayCastLeft": true,
+                                    "RayCountLeft": 2,
+                                    "RayLengthLeft": 2.0,
+                                    "RayInsetLeft": 0.0,
+                                    "RayInsetFirstLeft": 0.0,
+                                    "RayInsetLastLeft": 0.0,
+                                    "Flags": [
+                                        "Player"
+                                    ]
+                                }
+                            ],
+                            "ParticleEffectProperties": []
+                        },
+                        {
+                            "SpriteFrame": 72,
+                            "Duration": 0.10000000149011612,
+                            "FlipHorizontal": true,
+                            "FlipVertical": false,
+                            "Rotate": false,
+                            "BoundingBoxProperties": [
+                                {
+                                    "Enabled": true,
+                                    "Size": {
+                                        "x": 7.0,
+                                        "y": 21.0
+                                    },
+                                    "Offset": {
+                                        "x": -2.0,
+                                        "y": -2.0
+                                    },
+                                    "RayCastUp": true,
+                                    "RayCountUp": 2,
+                                    "RayLengthUp": 2.0,
+                                    "RayInsetUp": 0.0,
+                                    "RayInsetFirstUp": 0.0,
+                                    "RayInsetLastUp": 0.0,
+                                    "RayCastRight": true,
+                                    "RayCountRight": 2,
+                                    "RayLengthRight": 2.0,
+                                    "RayInsetRight": 0.0,
+                                    "RayInsetFirstRight": 0.0,
+                                    "RayInsetLastRight": 0.0,
+                                    "RayCastDown": true,
+                                    "RayCountDown": 2,
+                                    "RayLengthDown": 2.0,
+                                    "RayInsetDown": 0.0,
+                                    "RayInsetFirstDown": 0.0,
+                                    "RayInsetLastDown": 0.0,
+                                    "RayCastLeft": true,
+                                    "RayCountLeft": 2,
+                                    "RayLengthLeft": 2.0,
+                                    "RayInsetLeft": 0.0,
+                                    "RayInsetFirstLeft": 0.0,
+                                    "RayInsetLastLeft": 0.0,
+                                    "Flags": [
+                                        "Player"
+                                    ]
+                                }
+                            ],
+                            "ParticleEffectProperties": []
+                        },
+                        {
+                            "SpriteFrame": 73,
+                            "Duration": 0.10000000149011612,
+                            "FlipHorizontal": true,
+                            "FlipVertical": false,
+                            "Rotate": false,
+                            "BoundingBoxProperties": [
+                                {
+                                    "Enabled": true,
+                                    "Size": {
+                                        "x": 7.0,
+                                        "y": 21.0
+                                    },
+                                    "Offset": {
+                                        "x": -2.0,
+                                        "y": -2.0
+                                    },
+                                    "RayCastUp": true,
+                                    "RayCountUp": 2,
+                                    "RayLengthUp": 2.0,
+                                    "RayInsetUp": 0.0,
+                                    "RayInsetFirstUp": 0.0,
+                                    "RayInsetLastUp": 0.0,
+                                    "RayCastRight": true,
+                                    "RayCountRight": 2,
+                                    "RayLengthRight": 2.0,
+                                    "RayInsetRight": 0.0,
+                                    "RayInsetFirstRight": 0.0,
+                                    "RayInsetLastRight": 0.0,
+                                    "RayCastDown": true,
+                                    "RayCountDown": 2,
+                                    "RayLengthDown": 2.0,
+                                    "RayInsetDown": 0.0,
+                                    "RayInsetFirstDown": 0.0,
+                                    "RayInsetLastDown": 0.0,
+                                    "RayCastLeft": true,
+                                    "RayCountLeft": 2,
+                                    "RayLengthLeft": 2.0,
+                                    "RayInsetLeft": 0.0,
+                                    "RayInsetFirstLeft": 0.0,
+                                    "RayInsetLastLeft": 0.0,
+                                    "Flags": [
+                                        "Player"
+                                    ]
+                                }
+                            ],
+                            "ParticleEffectProperties": []
+                        },
+                        {
+                            "SpriteFrame": 74,
+                            "Duration": 0.10000000149011612,
+                            "FlipHorizontal": true,
+                            "FlipVertical": false,
+                            "Rotate": false,
+                            "BoundingBoxProperties": [
+                                {
+                                    "Enabled": true,
+                                    "Size": {
+                                        "x": 7.0,
+                                        "y": 21.0
+                                    },
+                                    "Offset": {
+                                        "x": -2.0,
+                                        "y": -2.0
+                                    },
+                                    "RayCastUp": true,
+                                    "RayCountUp": 2,
+                                    "RayLengthUp": 2.0,
+                                    "RayInsetUp": 0.0,
+                                    "RayInsetFirstUp": 0.0,
+                                    "RayInsetLastUp": 0.0,
+                                    "RayCastRight": true,
+                                    "RayCountRight": 2,
+                                    "RayLengthRight": 2.0,
+                                    "RayInsetRight": 0.0,
+                                    "RayInsetFirstRight": 0.0,
+                                    "RayInsetLastRight": 0.0,
+                                    "RayCastDown": true,
+                                    "RayCountDown": 2,
+                                    "RayLengthDown": 2.0,
+                                    "RayInsetDown": 0.0,
+                                    "RayInsetFirstDown": 0.0,
+                                    "RayInsetLastDown": 0.0,
+                                    "RayCastLeft": true,
+                                    "RayCountLeft": 2,
+                                    "RayLengthLeft": 2.0,
+                                    "RayInsetLeft": 0.0,
+                                    "RayInsetFirstLeft": 0.0,
+                                    "RayInsetLastLeft": 0.0,
+                                    "Flags": [
+                                        "Player"
+                                    ]
+                                }
+                            ],
+                            "ParticleEffectProperties": []
+                        },
+                        {
+                            "SpriteFrame": 75,
+                            "Duration": 0.10000000149011612,
+                            "FlipHorizontal": true,
+                            "FlipVertical": false,
+                            "Rotate": false,
+                            "BoundingBoxProperties": [
+                                {
+                                    "Enabled": true,
+                                    "Size": {
+                                        "x": 7.0,
+                                        "y": 21.0
+                                    },
+                                    "Offset": {
+                                        "x": -2.0,
+                                        "y": -2.0
+                                    },
+                                    "RayCastUp": true,
+                                    "RayCountUp": 2,
+                                    "RayLengthUp": 2.0,
+                                    "RayInsetUp": 0.0,
+                                    "RayInsetFirstUp": 0.0,
+                                    "RayInsetLastUp": 0.0,
+                                    "RayCastRight": true,
+                                    "RayCountRight": 2,
+                                    "RayLengthRight": 2.0,
+                                    "RayInsetRight": 0.0,
+                                    "RayInsetFirstRight": 0.0,
+                                    "RayInsetLastRight": 0.0,
+                                    "RayCastDown": true,
+                                    "RayCountDown": 2,
+                                    "RayLengthDown": 2.0,
+                                    "RayInsetDown": 0.0,
+                                    "RayInsetFirstDown": 0.0,
+                                    "RayInsetLastDown": 0.0,
+                                    "RayCastLeft": true,
+                                    "RayCountLeft": 2,
+                                    "RayLengthLeft": 2.0,
+                                    "RayInsetLeft": 0.0,
+                                    "RayInsetFirstLeft": 0.0,
+                                    "RayInsetLastLeft": 0.0,
+                                    "Flags": [
+                                        "Player"
+                                    ]
+                                }
+                            ],
+                            "ParticleEffectProperties": []
+                        },
+                        {
+                            "SpriteFrame": 76,
+                            "Duration": 0.10000000149011612,
+                            "FlipHorizontal": true,
+                            "FlipVertical": false,
+                            "Rotate": false,
+                            "BoundingBoxProperties": [
+                                {
+                                    "Enabled": true,
+                                    "Size": {
+                                        "x": 7.0,
+                                        "y": 21.0
+                                    },
+                                    "Offset": {
+                                        "x": -2.0,
+                                        "y": -2.0
+                                    },
+                                    "RayCastUp": true,
+                                    "RayCountUp": 2,
+                                    "RayLengthUp": 2.0,
+                                    "RayInsetUp": 0.0,
+                                    "RayInsetFirstUp": 0.0,
+                                    "RayInsetLastUp": 0.0,
+                                    "RayCastRight": true,
+                                    "RayCountRight": 2,
+                                    "RayLengthRight": 2.0,
+                                    "RayInsetRight": 0.0,
+                                    "RayInsetFirstRight": 0.0,
+                                    "RayInsetLastRight": 0.0,
+                                    "RayCastDown": true,
+                                    "RayCountDown": 2,
+                                    "RayLengthDown": 2.0,
+                                    "RayInsetDown": 0.0,
+                                    "RayInsetFirstDown": 0.0,
+                                    "RayInsetLastDown": 0.0,
+                                    "RayCastLeft": true,
+                                    "RayCountLeft": 2,
+                                    "RayLengthLeft": 2.0,
+                                    "RayInsetLeft": 0.0,
+                                    "RayInsetFirstLeft": 0.0,
+                                    "RayInsetLastLeft": 0.0,
+                                    "Flags": [
+                                        "Player"
+                                    ]
+                                }
+                            ],
+                            "ParticleEffectProperties": []
+                        },
+                        {
+                            "SpriteFrame": 77,
+                            "Duration": 0.10000000149011612,
+                            "FlipHorizontal": true,
+                            "FlipVertical": false,
+                            "Rotate": false,
+                            "BoundingBoxProperties": [
+                                {
+                                    "Enabled": true,
+                                    "Size": {
+                                        "x": 7.0,
+                                        "y": 21.0
+                                    },
+                                    "Offset": {
+                                        "x": -2.0,
+                                        "y": -2.0
+                                    },
+                                    "RayCastUp": true,
+                                    "RayCountUp": 2,
+                                    "RayLengthUp": 2.0,
+                                    "RayInsetUp": 0.0,
+                                    "RayInsetFirstUp": 0.0,
+                                    "RayInsetLastUp": 0.0,
+                                    "RayCastRight": true,
+                                    "RayCountRight": 2,
+                                    "RayLengthRight": 2.0,
+                                    "RayInsetRight": 0.0,
+                                    "RayInsetFirstRight": 0.0,
+                                    "RayInsetLastRight": 0.0,
+                                    "RayCastDown": true,
+                                    "RayCountDown": 2,
+                                    "RayLengthDown": 2.0,
+                                    "RayInsetDown": 0.0,
+                                    "RayInsetFirstDown": 0.0,
+                                    "RayInsetLastDown": 0.0,
+                                    "RayCastLeft": true,
+                                    "RayCountLeft": 2,
+                                    "RayLengthLeft": 2.0,
+                                    "RayInsetLeft": 0.0,
+                                    "RayInsetFirstLeft": 0.0,
+                                    "RayInsetLastLeft": 0.0,
+                                    "Flags": [
+                                        "Player"
+                                    ]
+                                }
+                            ],
+                            "ParticleEffectProperties": []
+                        },
+                        {
+                            "SpriteFrame": 78,
+                            "Duration": 0.10000000149011612,
+                            "FlipHorizontal": true,
+                            "FlipVertical": false,
+                            "Rotate": false,
+                            "BoundingBoxProperties": [
+                                {
+                                    "Enabled": true,
+                                    "Size": {
+                                        "x": 7.0,
+                                        "y": 21.0
+                                    },
+                                    "Offset": {
+                                        "x": -2.0,
+                                        "y": -2.0
+                                    },
+                                    "RayCastUp": true,
+                                    "RayCountUp": 2,
+                                    "RayLengthUp": 2.0,
+                                    "RayInsetUp": 0.0,
+                                    "RayInsetFirstUp": 0.0,
+                                    "RayInsetLastUp": 0.0,
+                                    "RayCastRight": true,
+                                    "RayCountRight": 2,
+                                    "RayLengthRight": 2.0,
+                                    "RayInsetRight": 0.0,
+                                    "RayInsetFirstRight": 0.0,
+                                    "RayInsetLastRight": 0.0,
+                                    "RayCastDown": true,
+                                    "RayCountDown": 2,
+                                    "RayLengthDown": 2.0,
+                                    "RayInsetDown": 0.0,
+                                    "RayInsetFirstDown": 0.0,
+                                    "RayInsetLastDown": 0.0,
+                                    "RayCastLeft": true,
+                                    "RayCountLeft": 2,
+                                    "RayLengthLeft": 2.0,
+                                    "RayInsetLeft": 0.0,
+                                    "RayInsetFirstLeft": 0.0,
+                                    "RayInsetLastLeft": 0.0,
+                                    "Flags": [
+                                        "Player"
+                                    ]
+                                }
+                            ],
+                            "ParticleEffectProperties": []
+                        },
+                        {
+                            "SpriteFrame": 79,
+                            "Duration": 0.10000000149011612,
+                            "FlipHorizontal": true,
+                            "FlipVertical": false,
+                            "Rotate": false,
+                            "BoundingBoxProperties": [
+                                {
+                                    "Enabled": true,
+                                    "Size": {
+                                        "x": 7.0,
+                                        "y": 21.0
+                                    },
+                                    "Offset": {
+                                        "x": -2.0,
+                                        "y": -2.0
+                                    },
+                                    "RayCastUp": true,
+                                    "RayCountUp": 2,
+                                    "RayLengthUp": 2.0,
+                                    "RayInsetUp": 0.0,
+                                    "RayInsetFirstUp": 0.0,
+                                    "RayInsetLastUp": 0.0,
+                                    "RayCastRight": true,
+                                    "RayCountRight": 2,
+                                    "RayLengthRight": 2.0,
+                                    "RayInsetRight": 0.0,
+                                    "RayInsetFirstRight": 0.0,
+                                    "RayInsetLastRight": 0.0,
+                                    "RayCastDown": true,
+                                    "RayCountDown": 2,
+                                    "RayLengthDown": 2.0,
+                                    "RayInsetDown": 0.0,
+                                    "RayInsetFirstDown": 0.0,
+                                    "RayInsetLastDown": 0.0,
+                                    "RayCastLeft": true,
+                                    "RayCountLeft": 2,
+                                    "RayLengthLeft": 2.0,
+                                    "RayInsetLeft": 0.0,
+                                    "RayInsetFirstLeft": 0.0,
+                                    "RayInsetLastLeft": 0.0,
+                                    "Flags": [
+                                        "Player"
+                                    ]
+                                }
+                            ],
+                            "ParticleEffectProperties": []
+                        }
+                    ],
+                    "AnimationConditions": []
+                }
+            ],
+            "SoundEffects": [],
+            "EditorPosition": {
+                "x": 220.0,
+                "y": 40.0
+            },
+            "StateEntryActorEvents": [],
+            "StateExitActorEvents": []
+        },
+        {
+            "Name": "idle",
+            "Class": "Boomerang2DFramework.Framework.Actors.States.Idle, B2DFramework, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "PropertiesClass": "Boomerang2DFramework.Framework.Actors.States.IdleProperties, B2DFramework, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": "{\"CanBeGrounded\":true,\"CollidesWithGeometry\":true,\"CollidesWithActors\":true,\"OverlapsGeometry\":true,\"OverlapsOtherActors\":true,\"OverlapsWeapons\":true,\"Deceleration\":{\"StartValue\":1.5,\"Entries\":[],\"ClampMin\":false,\"ClampMinValue\":0.0,\"ClampMax\":false,\"ClampMaxValue\":0.0},\"GlueHeight\":{\"StartValue\":0.0,\"Entries\":[],\"ClampMin\":false,\"ClampMinValue\":0.0,\"ClampMax\":false,\"ClampMaxValue\":0.0}}",
+            "TransitionTriggers": [
+                {
+                    "NextState": "walk",
+                    "ActorTriggerBuilders": [
+                        {
+                            "TriggerClass": "Boomerang2DFramework.Framework.Actors.TriggerSystem.Triggers.UserInputHeld, B2DFramework, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                            "TriggerPropertyClass": "Boomerang2DFramework.Framework.Actors.TriggerSystem.Triggers.UserInputHeldProperties, B2DFramework, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                            "TriggerProperties": "{\"InputType\":1,\"InputValue\":\"Horizontal+\"}"
+                        }
+                    ]
+                },
+                {
+                    "NextState": "walk",
+                    "ActorTriggerBuilders": [
+                        {
+                            "TriggerClass": "Boomerang2DFramework.Framework.Actors.TriggerSystem.Triggers.UserInputHeld, B2DFramework, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                            "TriggerPropertyClass": "Boomerang2DFramework.Framework.Actors.TriggerSystem.Triggers.UserInputHeldProperties, B2DFramework, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                            "TriggerProperties": "{\"InputType\":1,\"InputValue\":\"Horizontal-\"}"
+                        }
+                    ]
+                }
+            ],
+            "RandomTransitionTriggers": [],
+            "ModificationTriggers": [],
+            "WeaponTriggers": [],
+            "Animations": [
+                {
+                    "Name": "idle_right",
+                    "BoundToGlobalTimeManager": false,
+                    "IndefinitelyLoops": true,
+                    "FixedLoopCount": 0,
+                    "FinalFrameAfterLoops": 0,
+                    "StartOnExistingSpriteFrame": false,
+                    "BoundToWeaponDuration": false,
+                    "WeaponBoundTo": "",
+                    "AnimationFrames": [
+                        {
+                            "SpriteFrame": 30,
+                            "Duration": 3.0,
+                            "FlipHorizontal": false,
+                            "FlipVertical": false,
+                            "Rotate": false,
+                            "BoundingBoxProperties": [
+                                {
+                                    "Enabled": true,
+                                    "Size": {
+                                        "x": 7.0,
+                                        "y": 21.0
+                                    },
+                                    "Offset": {
+                                        "x": 2.0,
+                                        "y": -2.0
+                                    },
+                                    "RayCastUp": true,
+                                    "RayCountUp": 2,
+                                    "RayLengthUp": 2.0,
+                                    "RayInsetUp": 0.0,
+                                    "RayInsetFirstUp": 0.0,
+                                    "RayInsetLastUp": 0.0,
+                                    "RayCastRight": true,
+                                    "RayCountRight": 2,
+                                    "RayLengthRight": 2.0,
+                                    "RayInsetRight": 0.0,
+                                    "RayInsetFirstRight": 0.0,
+                                    "RayInsetLastRight": 0.0,
+                                    "RayCastDown": true,
+                                    "RayCountDown": 2,
+                                    "RayLengthDown": 2.0,
+                                    "RayInsetDown": 0.0,
+                                    "RayInsetFirstDown": 0.0,
+                                    "RayInsetLastDown": 0.0,
+                                    "RayCastLeft": true,
+                                    "RayCountLeft": 2,
+                                    "RayLengthLeft": 2.0,
+                                    "RayInsetLeft": 0.0,
+                                    "RayInsetFirstLeft": 0.0,
+                                    "RayInsetLastLeft": 0.0,
+                                    "Flags": [
+                                        "Player"
+                                    ]
+                                }
+                            ],
+                            "ParticleEffectProperties": []
+                        },
+                        {
+                            "SpriteFrame": 31,
+                            "Duration": 0.10000000149011612,
+                            "FlipHorizontal": false,
+                            "FlipVertical": false,
+                            "Rotate": false,
+                            "BoundingBoxProperties": [
+                                {
+                                    "Enabled": true,
+                                    "Size": {
+                                        "x": 7.0,
+                                        "y": 21.0
+                                    },
+                                    "Offset": {
+                                        "x": 2.0,
+                                        "y": -2.0
+                                    },
+                                    "RayCastUp": true,
+                                    "RayCountUp": 2,
+                                    "RayLengthUp": 2.0,
+                                    "RayInsetUp": 0.0,
+                                    "RayInsetFirstUp": 0.0,
+                                    "RayInsetLastUp": 0.0,
+                                    "RayCastRight": true,
+                                    "RayCountRight": 2,
+                                    "RayLengthRight": 2.0,
+                                    "RayInsetRight": 0.0,
+                                    "RayInsetFirstRight": 0.0,
+                                    "RayInsetLastRight": 0.0,
+                                    "RayCastDown": true,
+                                    "RayCountDown": 2,
+                                    "RayLengthDown": 2.0,
+                                    "RayInsetDown": 0.0,
+                                    "RayInsetFirstDown": 0.0,
+                                    "RayInsetLastDown": 0.0,
+                                    "RayCastLeft": true,
+                                    "RayCountLeft": 2,
+                                    "RayLengthLeft": 2.0,
+                                    "RayInsetLeft": 0.0,
+                                    "RayInsetFirstLeft": 0.0,
+                                    "RayInsetLastLeft": 0.0,
+                                    "Flags": [
+                                        "Player"
+                                    ]
+                                }
+                            ],
+                            "ParticleEffectProperties": []
+                        },
+                        {
+                            "SpriteFrame": 32,
+                            "Duration": 0.10000000149011612,
+                            "FlipHorizontal": false,
+                            "FlipVertical": false,
+                            "Rotate": false,
+                            "BoundingBoxProperties": [
+                                {
+                                    "Enabled": true,
+                                    "Size": {
+                                        "x": 7.0,
+                                        "y": 21.0
+                                    },
+                                    "Offset": {
+                                        "x": 2.0,
+                                        "y": -2.0
+                                    },
+                                    "RayCastUp": true,
+                                    "RayCountUp": 2,
+                                    "RayLengthUp": 2.0,
+                                    "RayInsetUp": 0.0,
+                                    "RayInsetFirstUp": 0.0,
+                                    "RayInsetLastUp": 0.0,
+                                    "RayCastRight": true,
+                                    "RayCountRight": 2,
+                                    "RayLengthRight": 2.0,
+                                    "RayInsetRight": 0.0,
+                                    "RayInsetFirstRight": 0.0,
+                                    "RayInsetLastRight": 0.0,
+                                    "RayCastDown": true,
+                                    "RayCountDown": 2,
+                                    "RayLengthDown": 2.0,
+                                    "RayInsetDown": 0.0,
+                                    "RayInsetFirstDown": 0.0,
+                                    "RayInsetLastDown": 0.0,
+                                    "RayCastLeft": true,
+                                    "RayCountLeft": 2,
+                                    "RayLengthLeft": 2.0,
+                                    "RayInsetLeft": 0.0,
+                                    "RayInsetFirstLeft": 0.0,
+                                    "RayInsetLastLeft": 0.0,
+                                    "Flags": [
+                                        "Player"
+                                    ]
+                                }
+                            ],
+                            "ParticleEffectProperties": []
+                        }
+                    ],
+                    "AnimationConditions": []
+                },
+                {
+                    "Name": "idle_left",
+                    "BoundToGlobalTimeManager": false,
+                    "IndefinitelyLoops": true,
+                    "FixedLoopCount": 0,
+                    "FinalFrameAfterLoops": 0,
+                    "StartOnExistingSpriteFrame": false,
+                    "BoundToWeaponDuration": false,
+                    "WeaponBoundTo": "",
+                    "AnimationFrames": [
+                        {
+                            "SpriteFrame": 30,
+                            "Duration": 3.5999999046325685,
+                            "FlipHorizontal": true,
+                            "FlipVertical": false,
+                            "Rotate": false,
+                            "BoundingBoxProperties": [
+                                {
+                                    "Enabled": true,
+                                    "Size": {
+                                        "x": 7.0,
+                                        "y": 21.0
+                                    },
+                                    "Offset": {
+                                        "x": -2.0,
+                                        "y": -2.0
+                                    },
+                                    "RayCastUp": true,
+                                    "RayCountUp": 2,
+                                    "RayLengthUp": 2.0,
+                                    "RayInsetUp": 0.0,
+                                    "RayInsetFirstUp": 0.0,
+                                    "RayInsetLastUp": 0.0,
+                                    "RayCastRight": true,
+                                    "RayCountRight": 2,
+                                    "RayLengthRight": 2.0,
+                                    "RayInsetRight": 0.0,
+                                    "RayInsetFirstRight": 0.0,
+                                    "RayInsetLastRight": 0.0,
+                                    "RayCastDown": true,
+                                    "RayCountDown": 2,
+                                    "RayLengthDown": 2.0,
+                                    "RayInsetDown": 0.0,
+                                    "RayInsetFirstDown": 0.0,
+                                    "RayInsetLastDown": 0.0,
+                                    "RayCastLeft": true,
+                                    "RayCountLeft": 2,
+                                    "RayLengthLeft": 2.0,
+                                    "RayInsetLeft": 0.0,
+                                    "RayInsetFirstLeft": 0.0,
+                                    "RayInsetLastLeft": 0.0,
+                                    "Flags": [
+                                        "Player"
+                                    ]
+                                }
+                            ],
+                            "ParticleEffectProperties": []
+                        },
+                        {
+                            "SpriteFrame": 31,
+                            "Duration": 0.10000000149011612,
+                            "FlipHorizontal": true,
+                            "FlipVertical": false,
+                            "Rotate": false,
+                            "BoundingBoxProperties": [
+                                {
+                                    "Enabled": true,
+                                    "Size": {
+                                        "x": 7.0,
+                                        "y": 21.0
+                                    },
+                                    "Offset": {
+                                        "x": -2.0,
+                                        "y": -2.0
+                                    },
+                                    "RayCastUp": true,
+                                    "RayCountUp": 2,
+                                    "RayLengthUp": 2.0,
+                                    "RayInsetUp": 0.0,
+                                    "RayInsetFirstUp": 0.0,
+                                    "RayInsetLastUp": 0.0,
+                                    "RayCastRight": true,
+                                    "RayCountRight": 2,
+                                    "RayLengthRight": 2.0,
+                                    "RayInsetRight": 0.0,
+                                    "RayInsetFirstRight": 0.0,
+                                    "RayInsetLastRight": 0.0,
+                                    "RayCastDown": true,
+                                    "RayCountDown": 2,
+                                    "RayLengthDown": 2.0,
+                                    "RayInsetDown": 0.0,
+                                    "RayInsetFirstDown": 0.0,
+                                    "RayInsetLastDown": 0.0,
+                                    "RayCastLeft": true,
+                                    "RayCountLeft": 2,
+                                    "RayLengthLeft": 2.0,
+                                    "RayInsetLeft": 0.0,
+                                    "RayInsetFirstLeft": 0.0,
+                                    "RayInsetLastLeft": 0.0,
+                                    "Flags": [
+                                        "Player"
+                                    ]
+                                }
+                            ],
+                            "ParticleEffectProperties": []
+                        },
+                        {
+                            "SpriteFrame": 32,
+                            "Duration": 0.10000000149011612,
+                            "FlipHorizontal": true,
+                            "FlipVertical": false,
+                            "Rotate": false,
+                            "BoundingBoxProperties": [
+                                {
+                                    "Enabled": true,
+                                    "Size": {
+                                        "x": 7.0,
+                                        "y": 21.0
+                                    },
+                                    "Offset": {
+                                        "x": -2.0,
+                                        "y": -2.0
+                                    },
+                                    "RayCastUp": true,
+                                    "RayCountUp": 2,
+                                    "RayLengthUp": 2.0,
+                                    "RayInsetUp": 0.0,
+                                    "RayInsetFirstUp": 0.0,
+                                    "RayInsetLastUp": 0.0,
+                                    "RayCastRight": true,
+                                    "RayCountRight": 2,
+                                    "RayLengthRight": 2.0,
+                                    "RayInsetRight": 0.0,
+                                    "RayInsetFirstRight": 0.0,
+                                    "RayInsetLastRight": 0.0,
+                                    "RayCastDown": true,
+                                    "RayCountDown": 2,
+                                    "RayLengthDown": 2.0,
+                                    "RayInsetDown": 0.0,
+                                    "RayInsetFirstDown": 0.0,
+                                    "RayInsetLastDown": 0.0,
+                                    "RayCastLeft": true,
+                                    "RayCountLeft": 2,
+                                    "RayLengthLeft": 2.0,
+                                    "RayInsetLeft": 0.0,
+                                    "RayInsetFirstLeft": 0.0,
+                                    "RayInsetLastLeft": 0.0,
+                                    "Flags": [
+                                        "Player"
+                                    ]
+                                }
+                            ],
+                            "ParticleEffectProperties": []
+                        }
+                    ],
+                    "AnimationConditions": [
+                        {
+                            "ActorTriggerBuilders": [
+                                {
+                                    "TriggerClass": "Boomerang2DFramework.Framework.Actors.TriggerSystem.Triggers.FacingDirection, B2DFramework, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                                    "TriggerPropertyClass": "Boomerang2DFramework.Framework.Actors.TriggerSystem.Triggers.FacingDirectionProperties, B2DFramework, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                                    "TriggerProperties": "{\"FacingDirection\":2}"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "SoundEffects": [],
+            "EditorPosition": {
+                "x": 0.0,
+                "y": 40.0
+            },
+            "StateEntryActorEvents": [],
+            "StateExitActorEvents": []
+        }
+    ],
+    "Weapons": [
+        "actionSword"
+    ],
+    "BoundingBoxes": [
+        {
+            "Enabled": true,
+            "Size": {
+                "x": 16.0,
+                "y": 16.0
+            },
+            "Offset": {
+                "x": 16.0,
+                "y": 0.0
+            },
+            "RayCastUp": true,
+            "RayCountUp": 2,
+            "RayLengthUp": 2.0,
+            "RayInsetUp": 0.0,
+            "RayInsetFirstUp": 0.0,
+            "RayInsetLastUp": 0.0,
+            "RayCastRight": true,
+            "RayCountRight": 2,
+            "RayLengthRight": 2.0,
+            "RayInsetRight": 0.0,
+            "RayInsetFirstRight": 0.0,
+            "RayInsetLastRight": 0.0,
+            "RayCastDown": true,
+            "RayCountDown": 2,
+            "RayLengthDown": 2.0,
+            "RayInsetDown": 0.0,
+            "RayInsetFirstDown": 0.0,
+            "RayInsetLastDown": 0.0,
+            "RayCastLeft": true,
+            "RayCountLeft": 2,
+            "RayLengthLeft": 2.0,
+            "RayInsetLeft": 0.0,
+            "RayInsetFirstLeft": 0.0,
+            "RayInsetLastLeft": 0.0,
+            "Flags": [
+                "Player"
+            ]
+        }
+    ],
+    "StatsFloats": [],
+    "StatsStrings": [],
+    "StatsBools": [],
+    "InteractionEvents": [],
+    "ChildrenActors": [],
+    "ParticleEffects": []
+}
