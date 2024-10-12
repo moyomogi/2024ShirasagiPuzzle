@@ -67,6 +67,7 @@ UserSettings/Layouts
 /[Tt]emp/
 # ビルドは Build フォルダにて行ってください
 /[Bb]uild/
+/UserSettings
 
 # Files
 *.sh
