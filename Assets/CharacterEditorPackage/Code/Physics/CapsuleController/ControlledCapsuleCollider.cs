@@ -16,8 +16,31 @@ public partial class ControlledCapsuleCollider : ControlledCollider
     CCState m_State = new CCState();
 
     CapsuleTransform m_CapsuleTransform = new CapsuleTransform();
-    void Awake () 
-	{
+    void Awake()
+    {
+        // moyomogi
+        if (GameManager.instance.shouldRepositionPlayer)
+        {
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            if (player == null)
+            {
+                Debug.LogError("(LoadManager) Player タグの付いた GameObject が見つかりませんでした");
+            }
+            else
+            {
+                // foreach (string gemName in GameManager.instance.obtainedGemNames)
+                // {
+                //     GameObject gemObj = GameObject.Find(gemName);
+                //     if (gemObj != null)
+                //     {
+                //         gemObj.SetActive(false);
+                //     }
+                // }
+                player.transform.position = new Vector3(GameManager.instance.playerPosition[0], GameManager.instance.playerPosition[1], GameManager.instance.playerPosition[2]);
+            }
+            GameManager.instance.shouldRepositionPlayer = false;
+        }
+
         m_State.Init(this);
         m_PrevLength = m_Length;
         m_CapsuleTransform.SetLength(m_Length, CapsuleResizeMethod.FromCenter);
@@ -44,9 +67,9 @@ public partial class ControlledCapsuleCollider : ControlledCollider
             m_CapsuleTransform.SetPosition(transform.position);
         }
     }
-//Main movement update
-//Used by CharacterControllerBase to move the collider and update its velocity in the process
-//This will collide against geometry and take appropriate action
+    //Main movement update
+    //Used by CharacterControllerBase to move the collider and update its velocity in the process
+    //This will collide against geometry and take appropriate action
     public override void UpdateWithVelocity(Vector2 a_Velocity)
     {
 #if UNITY_EDITOR
@@ -66,7 +89,7 @@ public partial class ControlledCapsuleCollider : ControlledCollider
         Vector3 realVel = new Vector3(a_Velocity.x, a_Velocity.y, 0) * Time.fixedDeltaTime;
         m_Collisions.Clear();
         if (m_CollisionsActive)
-        { 
+        {
             TryMove(realVel, ref a_Velocity);
         }
         else
@@ -89,7 +112,7 @@ public partial class ControlledCapsuleCollider : ControlledCollider
     //Max iteration count to prevent infinite loop
     void TryMove(Vector3 a_Velocity, ref Vector2 o_PureVel)
     {
-        for (int iteration = 0; iteration < 15; iteration ++)
+        for (int iteration = 0; iteration < 15; iteration++)
         {
             float distanceToTravel = a_Velocity.magnitude + m_MovementCapsuleCastMargin;
             float shortestDistance = distanceToTravel;
@@ -123,6 +146,7 @@ public partial class ControlledCapsuleCollider : ControlledCollider
             else//Reorient, try moving again, correct velocity
             {
 
+
                 CapsuleCollisionOccurrance collision = new CapsuleCollisionOccurrance();
                 collision.m_Point = hits[shortestHitIndex].point;
                 collision.m_Normal = hits[shortestHitIndex].normal;
@@ -131,7 +155,7 @@ public partial class ControlledCapsuleCollider : ControlledCollider
                 collision.m_IncomingVelocityPure = o_PureVel;
 
                 a_Velocity -= direction * distanceToTravel;
-                
+
                 Vector3 normal = hits[shortestHitIndex].normal;
                 Vector3 aligned = (new Vector3(normal.y, -normal.x, 0)).normalized;
                 float alignDot = Vector3.Dot(a_Velocity, aligned);
@@ -151,7 +175,7 @@ public partial class ControlledCapsuleCollider : ControlledCollider
             {
                 break;
             }
-        }        
+        }
     }
 
     public override void SetPosition(Vector3 a_Position)
@@ -215,7 +239,7 @@ public partial class ControlledCapsuleCollider : ControlledCollider
     public override void RotateToAlignWithNormal(Vector3 a_Normal, RotateMethod a_Method = RotateMethod.FromBottom)
     {
         if (m_CapsuleTransform.CanRotate(a_Normal, a_Method))
-        { 
+        {
             m_CapsuleTransform.Rotate(a_Normal, a_Method);
             UpdateContextInfo();
         }
@@ -245,12 +269,12 @@ public partial class ControlledCapsuleCollider : ControlledCollider
     {
         return m_CapsuleTransform.GetDownCenter(a_UseOriginalLength);
     }
-//Get collision information
+    //Get collision information
     public List<CapsuleCollisionOccurrance> GetCollisionInfo()
     {
         return m_Collisions;
     }
-//Get grounded, sidecast and edgecast information
+    //Get grounded, sidecast and edgecast information
     public override bool IsGrounded()
     {
         return m_State.m_GroundedInfo.m_IsGrounded;
@@ -284,7 +308,7 @@ public partial class ControlledCapsuleCollider : ControlledCollider
     {
         return m_State.m_EdgeCastInfo;
     }
-//Get/use the movement solver
+    //Get/use the movement solver
     public CapsuleMovingColliderSolver GetMovementSolver()
     {
         return m_CapsuleMovingColliderSolver;
@@ -310,12 +334,12 @@ public partial class ControlledCapsuleCollider : ControlledCollider
         if (!Application.isPlaying)
         {
             if (m_CapsuleTransform.GetLength() != m_Length)
-            m_CapsuleTransform.SetLength(m_Length);
+                m_CapsuleTransform.SetLength(m_Length);
             m_CapsuleTransform.m_CapsuleCollider = this;
             if (m_CapsuleTransform.GetPosition() != transform.position)
-            m_CapsuleTransform.SetPosition(transform.position);
+                m_CapsuleTransform.SetPosition(transform.position);
             if (m_CapsuleTransform.GetUpDirection() != transform.up)
-            m_CapsuleTransform.SetUpDirection(transform.up);
+                m_CapsuleTransform.SetUpDirection(transform.up);
         }
         Color preColor = Gizmos.color;
         Gizmos.color = Color.blue;

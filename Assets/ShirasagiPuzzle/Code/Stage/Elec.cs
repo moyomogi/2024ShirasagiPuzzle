@@ -20,19 +20,19 @@ public class Elec : MonoBehaviour
     // }
     public void TurnOff()
     {
-        sr.sprite = imageOff;
+        if (sr != null) sr.sprite = imageOff;
     }
     public void TurnOn()
     {
-        sr.sprite = imageOn;
+        if (sr != null) sr.sprite = imageOn;
     }
     private void OnTriggerStay(Collider otherCollider)
     {
         var other = otherCollider.GetComponent<Collider>();
-        if (other.tag == "Elec")
-        {
-            Debug.Log($"Elec");
-        }
+        // if (other.tag == "Elec")
+        // {
+        //     Debug.Log("Elec");
+        // }
         switch (other.tag)
         {
             case "Elec" or "Player":

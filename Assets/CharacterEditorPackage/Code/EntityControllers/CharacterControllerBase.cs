@@ -12,7 +12,7 @@ public abstract class CharacterControllerBase : MonoBehaviour
     protected bool m_MovementIsLocked;
 
     [SerializeField] protected ControlledCollider m_ControlledCollider;
-	[SerializeField] protected AbilityModuleManager m_AbilityManager;
+    [SerializeField] protected AbilityModuleManager m_AbilityManager;
 
     void Awake()
     {
@@ -27,8 +27,8 @@ public abstract class CharacterControllerBase : MonoBehaviour
         }
     }
 
-    void FixedUpdate ()
-    { 
+    void FixedUpdate()
+    {
         if (m_ControlledCollider == null)
         {
             return;
@@ -54,7 +54,7 @@ public abstract class CharacterControllerBase : MonoBehaviour
             m_AbilityManager.PostFixedUpdateModuleSelection();
         }
         else
-        { 
+        {
             DefaultUpdateMovement();
         }
     }
@@ -63,9 +63,9 @@ public abstract class CharacterControllerBase : MonoBehaviour
     {
     }
 
-    protected virtual void DefaultUpdateMovement ()
+    protected virtual void DefaultUpdateMovement()
     {
-	}
+    }
 
     public ControlledCollider GetCollider()
     {
@@ -131,7 +131,7 @@ public abstract class CharacterControllerBase : MonoBehaviour
         {
             Debug.LogError("Move input not set up in character input");
         }
-        
+
     }
 
     //Get inputs from player
@@ -162,18 +162,18 @@ public abstract class CharacterControllerBase : MonoBehaviour
         }
         return GetCurrentSpriteStateForDefault();
     }
-	//Used for ability modules to specify an "up" direction for whatever state they might be in
-	public Vector2 GetCurrentVisualUp()
-	{
-		if (m_AbilityManager != null)
-		{
-			if (m_AbilityManager.GetCurrentModule() != null)
-			{
-				return m_AbilityManager.GetCurrentModule().GetCurrentVisualUp();
-			}
-		}
-		return Vector2.up;
-	}
+    //Used for ability modules to specify an "up" direction for whatever state they might be in
+    public Vector2 GetCurrentVisualUp()
+    {
+        if (m_AbilityManager != null)
+        {
+            if (m_AbilityManager.GetCurrentModule() != null)
+            {
+                return m_AbilityManager.GetCurrentModule().GetCurrentVisualUp();
+            }
+        }
+        return Vector2.up;
+    }
 
     protected virtual string GetCurrentSpriteStateForDefault()
     {

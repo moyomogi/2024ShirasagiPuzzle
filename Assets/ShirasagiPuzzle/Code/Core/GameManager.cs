@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using System.IO;
 
 // グループ分け
 public class UnionFind
@@ -51,6 +53,12 @@ public class GameManager : MonoBehaviour
     public static GameManager instance { get; private set; }
     public bool shouldLoad = false;
 
+    public bool shouldRepositionPlayer = false;
+    public float[] playerPosition = new float[3];
+
+    public AudioClip[] bgm;
+    AudioSource bgmAudioSource;
+
     // Awake には初期化処理を書く (Start より先に実行されるため)
     private void Awake()
     {
@@ -65,17 +73,71 @@ public class GameManager : MonoBehaviour
             // 生成済み
             Destroy(gameObject);
         }
+        bgmAudioSource = gameObject.AddComponent<AudioSource>();
+    }
+    private void Start()
+    {
+        PlayBGM(0);
+    }
+    private void PlayBGM(int idx)
+    {
+        if (idx == -1)
+        {
+            bgmAudioSource.Stop();
+        }
+        else
+        {
+            bgmAudioSource.clip = bgm[idx];
+            bgmAudioSource.loop = true;
+            bgmAudioSource.volume = 0.8f;
+            bgmAudioSource.Play();
+        }
     }
 
+    public void Init()
+    {
+        // Init
+        GameManager.instance.shouldRepositionPlayer = false;
+        for (int i = 0; i < 3; i++)
+        {
+            GameManager.instance.playerPosition[i] = 0.0f;
+        }
+    }
 
     // Update は描画前に実行される
     private void Update()
     {
+        // If there is no save data file, save the game
+        if (!File.Exists(Application.persistentDataPath + "/save/data.dat"))
+        {
+            SaveManager.Save();
+            return;
+        }
+        // Press F2 to return to title scene
+        if (Input.GetKeyDown(KeyCode.F2))
+        {
+            // Load TitleScene.unity
+            SceneManager.LoadScene("Stage1_1");
+            // SceneManager.LoadScene("TitleScene");
+            return;
+        }
         // Esc でゲーム終了
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
             return;
+        }
+#if UNITY_EDITOR
+        // P で Save (For debugging)
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            SaveManager.Save();
+        }
+#endif
+        // R で Retry
+        if (Input.GetKeyDown(KeyCode.R) || GameManager.instance.shouldLoad)
+        {
+            LoadManager.Load();
         }
     }
 }

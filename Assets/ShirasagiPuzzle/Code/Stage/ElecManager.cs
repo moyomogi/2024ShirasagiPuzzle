@@ -24,6 +24,15 @@ public class ElecManager : MonoBehaviour
             // 生成済み
             Destroy(gameObject);
         }
+    }
+    private void Start()
+    {
+        Init();
+    }
+    private void Init()
+    {
+        elecInstanceIdToIdx = new Dictionary<int, int>();
+        elecs = new List<Elec>();
 
         GameObject[] elecGameObjs = GameObject.FindGameObjectsWithTag("Elec");
         foreach (GameObject elecGameObj in elecGameObjs)
@@ -52,7 +61,8 @@ public class ElecManager : MonoBehaviour
     {
         if (!elecInstanceIdToIdx.ContainsKey(id1))
         {
-            Debug.Log($"[Err] {EditorUtility.InstanceIDToObject(id1).name}({id1}), {EditorUtility.InstanceIDToObject(id2).name}({id2})");
+            // Debug.Log($"[Err] {EditorUtility.InstanceIDToObject(id1).name}({id1}), {EditorUtility.InstanceIDToObject(id2).name}({id2})");
+            Init();
             return;
         }
         int idx1 = elecInstanceIdToIdx[id1], idx2 = elecInstanceIdToIdx[id2];
@@ -70,7 +80,7 @@ public class ElecManager : MonoBehaviour
             Elec elec = elecs[i];
             if (UfElecSameByIndices(i, elecs.Count))
             {
-                Debug.Log($"[FixedUpdate] player is same as {i}");
+                // Debug.Log($"[FixedUpdate] player is same as {i}");
                 elec.TurnOn();
             }
             else
