@@ -10,11 +10,10 @@
 
 - [Boomerang 2D Framework](https://assetstore.unity.com/packages/templates/systems/boomerang-2d-framework-164608)
 
-## ###fetch and push test###
+## 参加者
 
 - [moyomogi](https://github.com/moyomogi?tab=repositories)
 - [Aclarinet](https://github.com/Aclarinet?tab=repositories)
 - [amagiri-010](https://github.com/amagiri-010?tab=repositories)
-- テ
 - [komugiR](https://github.com/komugiR?tab=repositories)
 - [sirayu2525](https://github.com/sirayu2525?tab=repositories)
