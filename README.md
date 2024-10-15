@@ -2,9 +2,10 @@
 
 # 2024 白鷺祭 よもぎ班
 
-## よもぎメモ
+## Documents (コード解説、使用素材)
 
-[Docs/moyomogi.md](https://github.com/moyomogi/2024ShirasagiPuzzle/blob/master/Docs/moyomogi.md)
+- [Docs/komugiR.md](https://github.com/moyomogi/2024ShirasagiPuzzle/blob/master/Docs/komugiR.md)
+- [Docs/moyomogi.md](https://github.com/moyomogi/2024ShirasagiPuzzle/blob/master/Docs/moyomogi.md)
 
 ## Used assets
 
