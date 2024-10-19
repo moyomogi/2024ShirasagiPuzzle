@@ -7,10 +7,6 @@
 - [Docs/komugiR.md](https://github.com/moyomogi/2024ShirasagiPuzzle/blob/master/Docs/komugiR.md)
 - [Docs/moyomogi.md](https://github.com/moyomogi/2024ShirasagiPuzzle/blob/master/Docs/moyomogi.md)
 
-## Used assets
-
-- [Boomerang 2D Framework](https://assetstore.unity.com/packages/templates/systems/boomerang-2d-framework-164608)
-
 ## 参加者
 
 - [moyomogi](https://github.com/moyomogi?tab=repositories)

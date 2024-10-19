@@ -51,14 +51,14 @@ public class GameManager : MonoBehaviour
     // ゲームマネージャーを作ってみよう https://youtu.be/JyrBl-06FAs?list=PLED8667EEZ9aB72WVMHfRHBd6oj9vplRy
     // GameManager とは、Scene を移動しても消滅させたくない変数を置く場所です
     public static GameManager instance { get; private set; }
-    public bool shouldLoad = false;
-
-    public bool shouldRepositionPlayer = false;
-    public float[] playerPosition = new float[3];
 
     public AudioClip[] bgm;
+    private int bgmIdx = -1;
     AudioSource bgmAudioSource;
 
+    public bool shouldLoad = false;
+    public bool shouldRepositionPlayer = false;
+    public float[] playerPosition = new float[3];
     // Awake には初期化処理を書く (Start より先に実行されるため)
     private void Awake()
     {
@@ -75,24 +75,6 @@ public class GameManager : MonoBehaviour
         }
         bgmAudioSource = gameObject.AddComponent<AudioSource>();
     }
-    private void Start()
-    {
-        PlayBGM(0);
-    }
-    private void PlayBGM(int idx)
-    {
-        if (idx == -1)
-        {
-            bgmAudioSource.Stop();
-        }
-        else
-        {
-            bgmAudioSource.clip = bgm[idx];
-            bgmAudioSource.loop = true;
-            bgmAudioSource.volume = 0.8f;
-            bgmAudioSource.Play();
-        }
-    }
 
     public void Init()
     {
@@ -107,6 +89,25 @@ public class GameManager : MonoBehaviour
     // Update は描画前に実行される
     private void Update()
     {
+        int newBgmIdx = -1;
+        switch (SceneManager.GetActiveScene().name)
+        {
+            case "TitleScene":
+                newBgmIdx = 0;
+                break;
+            case "Stage1_1":
+                newBgmIdx = 1;
+                break;
+            default:
+                newBgmIdx = 1;
+                break;
+        }
+        if (bgmIdx != newBgmIdx)
+        {
+            bgmIdx = newBgmIdx;
+            PlayBGM(bgmIdx);
+        }
+
         // If there is no save data file, save the game
         if (!File.Exists(Application.persistentDataPath + "/save/data.dat"))
         {
@@ -117,7 +118,7 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F2))
         {
             // Load TitleScene.unity
-            SceneManager.LoadScene("Stage1_1");
+            SceneManager.LoadScene("TitleScene");
             // SceneManager.LoadScene("TitleScene");
             return;
         }
@@ -138,6 +139,21 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R) || GameManager.instance.shouldLoad)
         {
             LoadManager.Load();
+        }
+    }
+
+    private void PlayBGM(int idx)
+    {
+        if (idx == -1)
+        {
+            bgmAudioSource.Stop();
+        }
+        else
+        {
+            bgmAudioSource.clip = bgm[idx];
+            bgmAudioSource.loop = true;
+            bgmAudioSource.volume = 0.8f;
+            bgmAudioSource.Play();
         }
     }
 }

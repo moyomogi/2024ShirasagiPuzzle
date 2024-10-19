@@ -18,7 +18,7 @@ public class SaveData
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (!player)
         {
-            Debug.LogError("(SaveData) Player タグの付いた GameObject が見つかりませんでした");
+            // Debug.LogError("(SaveData) Player タグの付いた GameObject が見つかりませんでした");
         }
         else
         {

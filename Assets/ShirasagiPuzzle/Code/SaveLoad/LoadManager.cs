@@ -18,7 +18,7 @@ public static class LoadManager
 
         if (!File.Exists(saveFilePath))
         {
-            Debug.Log("No save data.");
+            Debug.Log("No save data");
             SceneManager.LoadScene("Stage1_1");
             return;
         }
