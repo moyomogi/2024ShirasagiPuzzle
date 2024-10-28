@@ -14,8 +14,8 @@ public class Elec : MonoBehaviour
     private void Start()
     {
         sr = gameObject.GetComponent<SpriteRenderer>();
-        obj = this.gameObject.name.Substring(0, 4);
-        if (obj == "Invi") boxCol.enabled = false;
+        obj = this.gameObject.name.Substring(0, 3);
+        if (obj == "Inv") boxCol.enabled = false;
         //Debug.Log(obj);
     }
 
@@ -31,7 +31,7 @@ public class Elec : MonoBehaviour
             touch = false;
             Debug.Log(touch);
         }
-        if (obj == "Invi") boxCol.enabled = false;
+        if (obj == "Inv") boxCol.enabled = false;
     }
     public void TurnOn()
     {
@@ -41,7 +41,7 @@ public class Elec : MonoBehaviour
             touch = true;
             Debug.Log(touch);
         }
-        if (obj == "Invi") boxCol.enabled = true;
+        if (obj == "Inv") boxCol.enabled = true;
     }
     private void OnTriggerStay(Collider otherCollider)
     {
@@ -61,7 +61,7 @@ public class Elec : MonoBehaviour
             case "Player":
                 //ここにboxのタグを追加するとboxでも電流を流せるようになります
                 //boxにPlayerのタグをつけると何故か動かなかったです
-                if (obj != "Invi" || touch == true)
+                if (obj != "Inv" || touch == true)
                 {
                     int thisId2 = this.gameObject.GetInstanceID();
                     int otherId2 = other.gameObject.GetInstanceID();
