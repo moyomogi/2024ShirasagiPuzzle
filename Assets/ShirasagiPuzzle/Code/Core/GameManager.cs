@@ -98,6 +98,9 @@ public class GameManager : MonoBehaviour
             case "Stage1_1":
                 newBgmIdx = 1;
                 break;
+            case "Stage3_1":
+                newBgmIdx = 3;
+                break;
             default:
                 newBgmIdx = 1;
                 break;
