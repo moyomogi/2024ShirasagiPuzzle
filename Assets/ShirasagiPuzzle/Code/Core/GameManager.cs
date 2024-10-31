@@ -151,9 +151,6 @@ public class SerializableDictionary<TKey, TValue> :
         public TKey key = default;
         public TValue value = default;
 
-        /// <summary>
-        /// Pair
-        /// </summary>
         public Pair(TKey key, TValue value)
         {
             this.key = key;
@@ -164,9 +161,6 @@ public class SerializableDictionary<TKey, TValue> :
     [SerializeField]
     private List<Pair> _list = null;
 
-    /// <summary>
-    /// OnAfterDeserialize
-    /// </summary>
     void ISerializationCallbackReceiver.OnAfterDeserialize()
     {
         Clear();
@@ -180,9 +174,6 @@ public class SerializableDictionary<TKey, TValue> :
         }
     }
 
-    /// <summary>
-    /// OnBeforeSerialize
-    /// </summary>
     void ISerializationCallbackReceiver.OnBeforeSerialize()
     {
         // 処理なし
