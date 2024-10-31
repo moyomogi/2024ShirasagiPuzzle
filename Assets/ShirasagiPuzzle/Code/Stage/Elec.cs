@@ -6,30 +6,21 @@ using UnityEngine.UI;
 public class Elec : MonoBehaviour
 {
     // https://allmoreidea.hatenablog.com/entry/2018/06/30/112231
-    // ShockBlock ??? Elec ????????????????? public
     [SerializeField] Sprite imageOff;
     [SerializeField] Sprite imageOn;
-    [SerializeField] BoxCollider boxCol;
+    // [SerializeField] BoxCollider boxCol;
     SpriteRenderer sr;
-    string obj;
-    bool touch;
-    public SpriteRenderer sr;
 
     private void Start()
     {
         sr = gameObject.GetComponent<SpriteRenderer>();
         TurnOff();
-        obj = this.gameObject.name.Substring(0, 3);
-        if (obj == "Inv") boxCol.enabled = false;
+        // obj = this.gameObject.name.Substring(0, 3);
+        // if (obj == "Inv") boxCol.enabled = false;
         //Debug.Log(obj);
     }
 
-    // private void Update()
-    // {
-    //     sr.sprite = imageOff;
-    // }
-    // https://yuumekou.net/csharp-guide-5-4/
-    // virtual-override ?????????????
+    // virtual-override https://yuumekou.net/csharp-guide-5-4/
     public virtual void TurnOff()
     {
         SetImageOff();
@@ -38,7 +29,7 @@ public class Elec : MonoBehaviour
     {
         if (sr != null) sr.sprite = imageOff;
     }
-    public void TurnOn()
+    public virtual void TurnOn()
     {
         SetImageOn();
     }
@@ -49,8 +40,6 @@ public class Elec : MonoBehaviour
     private void OnTriggerStay(Collider otherCollider)
     {
         var other = otherCollider.GetComponent<Collider>();
-
-        // ???????
         bool collides = false;
 
         if (this.tag == "ElecBackground")

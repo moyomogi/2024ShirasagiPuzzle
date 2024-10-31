@@ -98,15 +98,4 @@ public class ElecManager : MonoBehaviour
 
         InitUfElec();
     }
-
-    // private void Update()
-    // {        // Elec 当たり判定
-    //     for (int i = 0; i < elecs.Count; i++)
-    //     {
-    //         Elec elec = elecs[i];
-    //         int elecId = elec.gameObject.GetInstanceID();
-    //         // elecInstanceIdToIdx.Add(elecId, i);
-    //         // Debug.Log($"{EditorUtility.InstanceIDToObject(elecId).name}({elecId}), {i}");
-    //     }
-    // }
 }
