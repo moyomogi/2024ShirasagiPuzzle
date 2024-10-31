@@ -55,7 +55,7 @@ public class Elec : MonoBehaviour
         {
             switch (other.tag)
             {
-                case "Elec" or "ElecBackground" or "Player":
+                case "Elec" or "ElecBackground" or "Player" or "LightningBox":
                     collides = true;
                     break;
             }
