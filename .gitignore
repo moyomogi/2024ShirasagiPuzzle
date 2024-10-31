@@ -67,7 +67,8 @@ UserSettings/Layouts
 # ビルドは Build フォルダにて行ってください
 # また、共有したくないファイルは Build フォルダに入れるか、この .gitignore に追記してください
 /[Bb]uild/
-/UserSettings
+/UserSettings/
+.vsconfig
 
 # Files
 *.sh
