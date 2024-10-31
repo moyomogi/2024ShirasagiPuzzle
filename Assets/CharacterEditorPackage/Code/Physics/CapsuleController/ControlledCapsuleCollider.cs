@@ -19,7 +19,7 @@ public partial class ControlledCapsuleCollider : ControlledCollider
     void Awake()
     {
         // moyomogi
-        if (GameManager.instance.shouldRepositionPlayer)
+        if (GameManager.instance != null && GameManager.instance.shouldRepositionPlayer)
         {
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             if (player == null)

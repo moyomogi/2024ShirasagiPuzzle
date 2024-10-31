@@ -39,6 +39,13 @@ public class ElecManager : MonoBehaviour
         {
             elecs.Add(elecGameObj.GetComponent<Elec>());
         }
+
+        GameObject[] elecBackgroundGameObjs = GameObject.FindGameObjectsWithTag("ElecBackground");
+        foreach (GameObject elecGameObj in elecBackgroundGameObjs)
+        {
+            elecs.Add(elecGameObj.GetComponent<Elec>());
+        }
+
         // elecs = GameObject.FindGameObjectsWithTag("Elec").GetComponent<Elec>();
         for (int i = 0; i < elecs.Count; i++)
         {

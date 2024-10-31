@@ -12,12 +12,14 @@ public class DeathTrigger : MonoBehaviour {
         {
             //Prevent death state to be used if the collider is no-clipping
             if (controlledCapsuleCollider.AreCollisionsActive())
-            { 
+            {
                 Debug.Log("Death triggered by: " + transform.name);
-                if (InSceneLevelSwitcher.Get())
-                {
-                    InSceneLevelSwitcher.Get().Respawn();
-                }
+                GameManager.instance.shouldLoad = true;
+                // if (InSceneLevelSwitcher.Get())
+                // {
+                //     Debug.Log("InSceneLevelSwitcher.Get(): " + InSceneLevelSwitcher.Get());
+                //     InSceneLevelSwitcher.Get().Respawn();
+                // }
             }
         }
     }

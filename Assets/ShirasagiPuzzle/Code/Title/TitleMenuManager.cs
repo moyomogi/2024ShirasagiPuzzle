@@ -16,7 +16,7 @@ public class TitleMenuManager : MonoBehaviour
         // Setup buttonObjects
         buttonObjects[0] = GameObject.Find("NewGameButton");
         buttonObjects[1] = GameObject.Find("LoadGameButton");
-        buttonObjects[2] = GameObject.Find("QuitGameButton");
+        buttonObjects[2] = GameObject.Find("ExitGameButton");
 
         if (File.Exists(Application.persistentDataPath + "/save/data.dat"))
         {
@@ -48,10 +48,12 @@ public class TitleMenuManager : MonoBehaviour
     {
         if (newGameButtonClicked) return;
         newGameButtonClicked = true;
+        GameManager.instance.PlaySound("decide");
         Debug.Log("New game button is clicked");
 
         // Delete save data file
         File.Delete(Application.persistentDataPath + "/save/data.dat");
+        Debug.Log($"delete {Application.persistentDataPath}/save/data.dat");
 
         GameManager.instance.Init();
         SceneManager.LoadScene("Stage1_1");
@@ -61,6 +63,7 @@ public class TitleMenuManager : MonoBehaviour
     {
         if (loadGameButtonClicked) return;
         loadGameButtonClicked = true;
+        GameManager.instance.PlaySound("decide");
         Debug.Log("Load game button is clicked");
 
         string saveFolderPath = Application.persistentDataPath + "/save";

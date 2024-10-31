@@ -17,8 +17,8 @@ public class StageController : MonoBehaviour
     }
     public void GameClear()
     {
-        var obj = GameObject.Find("BossCanvas");
-        if (obj != null) obj.SetActive(false);
+        // var obj = GameObject.Find("BossCanvas");
+        // if (obj != null) obj.SetActive(false);
         // gameClearUI.SetActive(true);
     }
     public void GameRestart()
@@ -28,9 +28,9 @@ public class StageController : MonoBehaviour
     private void Update()
     {
         // if (player.getIsDead()) GameOver();
-        if (SceneManager.GetActiveScene().name == "BossScene")
-        {
-            // if (boss.IsBossDead()) GameClear();
-        }
+        // if (SceneManager.GetActiveScene().name == "BossScene")
+        // {
+        //     // if (boss.IsBossDead()) GameClear();
+        // }
     }
 }
