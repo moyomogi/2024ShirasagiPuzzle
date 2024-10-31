@@ -33,13 +33,16 @@ public class Elec : MonoBehaviour
     public virtual void TurnOff()
     {
         SetImageOff();
-        // if (sr != null) sr.sprite = imageOff;
     }
     public void SetImageOff()
     {
         if (sr != null) sr.sprite = imageOff;
     }
     public void TurnOn()
+    {
+        SetImageOn();
+    }
+    public void SetImageOn()
     {
         if (sr != null) sr.sprite = imageOn;
     }
