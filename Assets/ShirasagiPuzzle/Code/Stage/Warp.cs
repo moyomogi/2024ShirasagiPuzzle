@@ -15,13 +15,21 @@ public class Warp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        RespawnManager respawnManager;
+        GameObject obj = GameObject.FindGameObjectWithTag("RespawnManager");
+        respawnManager = obj.GetComponent<RespawnManager>();
+        warpPoint.x = respawnManager.respos.x;
+        warpPoint.y = respawnManager.respos.y;
     }
     //ワープポイントに設定した座標に移動
     void OnCollisionEnter(Collision other)
      {
-    	target = other.gameObject.transform.position;
-    	target.x = warpPoint.x;
-    	target.y = warpPoint.y;
-    	other.gameObject.transform.position = target;
+        if(other.gameObject.tag==("Player"))
+        {
+            target = other.gameObject.transform.position;
+    	    target.x = warpPoint.x;
+    	    target.y = warpPoint.y;
+    	    other.gameObject.transform.position = target;
+        }
     }
 }
