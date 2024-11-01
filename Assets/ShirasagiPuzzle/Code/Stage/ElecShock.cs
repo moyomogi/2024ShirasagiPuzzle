@@ -35,7 +35,7 @@ public class ElecShock : MonoBehaviour
             if(!isSpawned)
             {
                 // 親オブジェクトの真上に生成（Y座標を上げる）
-                Vector3 spawnPosition = transform.position + new Vector3(0.0f, 3.8f, 0.0f);
+                Vector3 spawnPosition = transform.position + new Vector3(0.0f, 2.0f, 0.0f);
                 spawnedObject = Instantiate(obj, spawnPosition, Quaternion.identity);
                 isSpawned = true;
             }
