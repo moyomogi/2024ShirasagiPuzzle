@@ -51,11 +51,14 @@ public class PushBlock : MonoBehaviour
     }
     void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Wall")
+        switch (other.tag)
         {
-            _rb.velocity = other.GetComponent<Rigidbody>().velocity;
-            float add = 1.0f + other.gameObject.transform.localScale.y / 2;
-            transform.position = new Vector3(transform.position.x, other.gameObject.transform.position.y + add, 0);
+            // 動く床
+            case "Wall" or "PushBlock" or "LightningBox":
+                _rb.velocity = other.GetComponent<Rigidbody>().velocity;
+                float add = 1.0f + other.gameObject.transform.localScale.y / 2;
+                transform.position = new Vector3(transform.position.x, other.gameObject.transform.position.y + add, 0);
+                break;
         }
     }
     void OnTriggerExit(Collider other)

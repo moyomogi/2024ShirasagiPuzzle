@@ -7,9 +7,13 @@ public class ElecManager : MonoBehaviour
 {
     public static ElecManager instance { get; private set; }
 
-    private UnionFind ufElec = new UnionFind(128);
+    private const int UNION_FIND_SIZE = 1024;
+    private UnionFind ufElec;
     private Dictionary<int, int> elecInstanceIdToIdx = new Dictionary<int, int>();
     private List<Elec> elecs = new List<Elec>();
+
+    // 放電物体の index。具体的には Player, LigntningBox が該当
+    private List<int> LightningIndices = new List<int>();
 
     private void Awake()
     {
@@ -44,6 +48,7 @@ public class ElecManager : MonoBehaviour
                 // Check if the component is not null before adding
                 if (elecComponent != null)
                 {
+                    if (elecTag == "LightningBox") LightningIndices.Add(elecs.Count);
                     elecs.Add(elecComponent);
                 }
                 else
@@ -61,17 +66,20 @@ public class ElecManager : MonoBehaviour
             elecInstanceIdToIdx.Add(elecId, i);
             // Debug.Log($"[Start] {EditorUtility.InstanceIDToObject(elecId).name}({elecId}), {i}");
         }
+
+        // player は class Elec の継承が難しいため、別で処理
+        int playerIdx = elecs.Count;
+        LightningIndices.Add(playerIdx);
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         int playerId = player.gameObject.GetInstanceID();
-        // Debug.Log($"{playerId}");
-        elecInstanceIdToIdx.Add(playerId, elecs.Count);
+        elecInstanceIdToIdx.Add(playerId, playerIdx);
 
-
+        InitUfElec();
     }
 
     private void InitUfElec()
     {
-        ufElec = new UnionFind(128);
+        ufElec = new UnionFind(UNION_FIND_SIZE);
     }
     public void UfElecUniteByIds(int id1, int id2)
     {
@@ -91,12 +99,26 @@ public class ElecManager : MonoBehaviour
     // FixedUpdate は物理演算 (当たり判定など) の前に実行される
     private void FixedUpdate()
     {
+        bool[] isLightningList = new bool[elecs.Count];
+        for (int i = 0; i < elecs.Count; i++)
+        {
+            isLightningList[i] = false;
+        }
         for (int i = 0; i < elecs.Count; i++)
         {
             Elec elec = elecs[i];
-            if (UfElecSameByIndices(i, elecs.Count))
+            foreach (int idx in LightningIndices)
             {
-                // Debug.Log($"[FixedUpdate] player is same as {i}");
+                // 発電物体と同じグループなら光る
+                bool same = UfElecSameByIndices(i, idx);
+                isLightningList[i] = isLightningList[i] || same;
+            }
+        }
+        for (int i = 0; i < elecs.Count; i++)
+        {
+            Elec elec = elecs[i];
+            if (isLightningList[i])
+            {
                 elec.TurnOn();
             }
             else
