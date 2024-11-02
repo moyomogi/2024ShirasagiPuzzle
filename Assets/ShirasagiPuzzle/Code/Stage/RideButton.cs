@@ -21,7 +21,7 @@ public class RideButton : MonoBehaviour
         // }
         switch (other.tag)
         {
-            case "Player" or "PushBlock":
+            case "Player" or "PushBlock" or "LightningBox":
                 ridden = true;
                 transform.localScale = new Vector3(2, 0.7f, 1);
                 break;
