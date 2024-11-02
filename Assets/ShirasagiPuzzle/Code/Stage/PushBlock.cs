@@ -54,9 +54,11 @@ public class PushBlock : MonoBehaviour
         switch (other.tag)
         {
             // 動く床
-            case "Wall" or "PushBlock" or "LightningBox":
+            // csse "PushBlock":
+            // csse "LightningBox":
+            case "Wall":
                 _rb.velocity = other.GetComponent<Rigidbody>().velocity;
-                float add = 1.0f + other.gameObject.transform.localScale.y / 2;
+                float add = 1.0f + 0.5f * other.gameObject.transform.localScale.y;
                 transform.position = new Vector3(transform.position.x, other.gameObject.transform.position.y + add, 0);
                 break;
         }
