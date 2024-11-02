@@ -34,16 +34,23 @@ public class ElecManager : MonoBehaviour
         elecInstanceIdToIdx = new Dictionary<int, int>();
         elecs = new List<Elec>();
 
-        GameObject[] elecGameObjs = GameObject.FindGameObjectsWithTag("Elec");
-        foreach (GameObject elecGameObj in elecGameObjs)
+        string[] elecTags = { "Elec", "ElecBackground", "LightningBox" };
+        foreach (string elecTag in elecTags)
         {
-            elecs.Add(elecGameObj.GetComponent<Elec>());
-        }
-
-        GameObject[] elecBackgroundGameObjs = GameObject.FindGameObjectsWithTag("ElecBackground");
-        foreach (GameObject elecGameObj in elecBackgroundGameObjs)
-        {
-            elecs.Add(elecGameObj.GetComponent<Elec>());
+            GameObject[] elecGameObjs = GameObject.FindGameObjectsWithTag(elecTag);
+            foreach (GameObject elecGameObj in elecGameObjs)
+            {
+                Elec elecComponent = elecGameObj.GetComponent<Elec>();
+                // Check if the component is not null before adding
+                if (elecComponent != null)
+                {
+                    elecs.Add(elecComponent);
+                }
+                else
+                {
+                    Debug.Log($"GameObject with tag {elecTag} does not have an Elec component.");
+                }
+            }
         }
 
         // elecs = GameObject.FindGameObjectsWithTag("Elec").GetComponent<Elec>();
@@ -58,6 +65,8 @@ public class ElecManager : MonoBehaviour
         int playerId = player.gameObject.GetInstanceID();
         // Debug.Log($"{playerId}");
         elecInstanceIdToIdx.Add(playerId, elecs.Count);
+
+
     }
 
     private void InitUfElec()
