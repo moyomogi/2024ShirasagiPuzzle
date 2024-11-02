@@ -48,12 +48,12 @@ public class Elec : MonoBehaviour
                 case "Elec" or "ElecBackground":
                     collides = true;
                     break;
-                case "Player":
+                case "Player" or "LightningBox":
                     if (sr.sprite == imageOn) collides = true;
                     break;
             }
         }
-        else
+        else if (this.tag != "LightningBox")
         {
             switch (other.tag)
             {
