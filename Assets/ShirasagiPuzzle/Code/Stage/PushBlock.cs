@@ -18,7 +18,7 @@ public class PushBlock : MonoBehaviour
 
     void Start()
     {
-        _player = GameObject.FindGameObjectWithTag("Player");
+        _player = StageController.instance._player;
         // m_AbilityModule = _player.GetComponent<AbilityModule>();
         m_CharacterControllerBase = _player.GetComponent<CharacterControllerBase>();
         // PlayerInput pi = m_CharacterControllerBase.GetPlayerInput().GetDirectionInput("Move");
@@ -41,12 +41,23 @@ public class PushBlock : MonoBehaviour
                 _rb.AddForce(new Vector3(-PUSH_SPEED, 0, 0));
             }
         }
+        // else {
+        //     _rb.velocity = new Vector3(0, -12.0f, 0);
+        // }
     }
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
             collides = true;
+
+            // _rb.velocity = other.GetComponent<Rigidbody>().velocity;
+            float add = 0.5f * transform.localScale.y + 1.0f * _player.transform.localScale.y - 6.0f;
+            _player.transform.position = new Vector3(
+                _player.transform.position.x,
+                Mathf.Max(_player.transform.position.y, transform.position.y + add),
+                0
+            );
         }
     }
     void OnTriggerStay(Collider other)
@@ -57,9 +68,14 @@ public class PushBlock : MonoBehaviour
             // csse "PushBlock":
             // csse "LightningBox":
             case "Wall":
+                // 水平方向
                 _rb.velocity = other.GetComponent<Rigidbody>().velocity;
-                float add = 1.0f + 0.5f * other.gameObject.transform.localScale.y;
-                transform.position = new Vector3(transform.position.x, other.gameObject.transform.position.y + add, 0);
+                float add = 0.5f * transform.localScale.y + 0.5f * other.transform.localScale.y - 6.0f;
+                transform.position = new Vector3(transform.position.x, other.transform.position.y + add, 0);
+                // 鉛直方向
+                // _rb.velocity = other.GetComponent<Rigidbody>().velocity;
+                // float add = 0.5f * transform.localScale.y + 0.5f * other.transform.localScale.y - 6.0f;
+                // transform.position = new Vector3(transform.position.x, other.transform.position.y + add, 0);
                 break;
         }
     }

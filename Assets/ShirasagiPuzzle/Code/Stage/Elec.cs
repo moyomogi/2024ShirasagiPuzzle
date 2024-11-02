@@ -41,25 +41,31 @@ public class Elec : MonoBehaviour
         // var other = otherCollider.GetComponent<Collider>();
         bool collides = false;
 
-        if (this.tag == "ElecBackground")
+        // 能動的発電を行う LightningBox はグループ化処理から除外
+        if (this.tag != "LightningBox")
         {
-            switch (other.tag)
+            if (this.tag != "ElecBackground")
             {
-                case "Elec" or "ElecBackground":
-                    collides = true;
-                    break;
-                case "Player" or "LightningBox":
-                    if (sr.sprite == imageOn) collides = true;
-                    break;
+                // 基本は全部グループ化
+                switch (other.tag)
+                {
+                    case "Elec" or "ElecBackground" or "Player" or "LightningBox":
+                        collides = true;
+                        break;
+                }
             }
-        }
-        else if (this.tag != "LightningBox")
-        {
-            switch (other.tag)
+            else
             {
-                case "Elec" or "ElecBackground" or "Player" or "LightningBox":
-                    collides = true;
-                    break;
+                // InvisBlock, Chain は、発電物体 (Player, LightningBox) とは衝突せず、Elec, ElecBackground とは衝突する
+                switch (other.tag)
+                {
+                    case "Elec" or "ElecBackground":
+                        collides = true;
+                        break;
+                    case "Player" or "LightningBox":
+                        if (sr.sprite == imageOn) collides = true;
+                        break;
+                }
             }
         }
         if (collides)

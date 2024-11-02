@@ -15,7 +15,7 @@ public class SaveData
     public string sceneName = "";
     public SaveData()
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        GameObject player = StageController.instance._player;
         if (!player)
         {
             // Debug.LogError("(SaveData) Player タグの付いた GameObject が見つかりませんでした");

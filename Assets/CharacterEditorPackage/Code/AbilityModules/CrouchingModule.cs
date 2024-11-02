@@ -90,9 +90,7 @@ public class CrouchingModule : GroundedControllerAbilityModule
         if (Mathf.Abs(m_ControlledCollider.GetVelocity().x) < 0.0001f)
         {
             return "CrouchIdle";
-        }
-        else
-        {
+        } else {
             return "Crouch";
         }
     }

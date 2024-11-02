@@ -22,9 +22,7 @@ public class ElecManager : MonoBehaviour
             // 未生成
             instance = this;
             DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
+        } else {
             // 生成済み
             Destroy(gameObject);
         }
@@ -50,9 +48,7 @@ public class ElecManager : MonoBehaviour
                 {
                     if (elecTag == "LightningBox") LightningIndices.Add(elecs.Count);
                     elecs.Add(elecComponent);
-                }
-                else
-                {
+                } else {
                     Debug.Log($"GameObject with tag {elecTag} does not have an Elec component.");
                 }
             }
@@ -70,7 +66,7 @@ public class ElecManager : MonoBehaviour
         // player は class Elec の継承が難しいため、別で処理
         int playerIdx = elecs.Count;
         LightningIndices.Add(playerIdx);
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        GameObject player = StageController.instance._player;
         int playerId = player.gameObject.GetInstanceID();
         elecInstanceIdToIdx.Add(playerId, playerIdx);
 
@@ -120,9 +116,7 @@ public class ElecManager : MonoBehaviour
             if (isLightningList[i])
             {
                 elec.TurnOn();
-            }
-            else
-            {
+            } else {
                 elec.TurnOff();
             }
         }

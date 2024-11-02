@@ -4,11 +4,45 @@ using UnityEngine;
 
 public class Elevator_v2 : MonoBehaviour
 {
+    // 1 s あたりの移動距離
+    [SerializeField] float speed;
+    // 行き先リスト
+    [SerializeField] List<Vector3> dests;
+    private int curDestIdx = 0;
+    private float elapsedTime = 0.0f;
+    private Vector3 defaultPos, displacement;
+
     private Rigidbody _rb;
+    // private GameObject _player;
+    private Rigidbody _player_rb;
 
     void Start()
     {
-        _rb = this.transform.GetComponent<Rigidbody>();
+        defaultPos = transform.position;
+
+        _rb = transform.GetComponent<Rigidbody>();
+        GameObject _player = StageController.instance._player;
+        _player_rb = _player.transform.GetComponent<Rigidbody>();
+    }
+
+    void FixedUpdate()
+    {
+        int nxtDestIdx = (curDestIdx + 1) % dests.Count;
+        Vector3 curDest = dests[curDestIdx], nxtDest = dests[nxtDestIdx];
+
+        // elapsedTime += Time.deltaTime;
+        elapsedTime += 1.0f / 60;
+        float r = speed * elapsedTime / (curDest - nxtDest).magnitude;
+        if (r > 1.0f) r = 1.0f;
+        displacement = curDest * (1 - r) + nxtDest * r; // 変位
+        // _rb.Move(defaultPos + displacement, Quaternion.identity);
+        transform.position = defaultPos + displacement;
+        if (r == 1.0f)
+        {
+            r = 0.0f;
+            curDestIdx = nxtDestIdx;
+            elapsedTime = 0;
+        }
     }
 
     private void OnCollisionStay(Collision other)
@@ -20,24 +54,28 @@ public class Elevator_v2 : MonoBehaviour
         // other.collider.tag
         // if (other.collider.tag == "Player")
         // {
-        // }
-        float subtract;
+        float add;
         switch (other.collider.tag)
         {
-            case "Player":
-                subtract = 0.5f + 1.1f * other.transform.localScale.y;
-                other.transform.Translate(0, -subtract, 0);
-                // transform.position = new Vector3(transform.position.x, other.transform.position.y + subtract, 0);
-                break;
             case "PushBlock":
-                subtract = 0.5f + 1.0f * other.transform.localScale.y;
-                other.transform.Translate(0, -subtract, 0);
-                // transform.position = new Vector3(transform.position.x, other.transform.position.y + subtract, 0);
+                add = 0.5f * transform.localScale.y + 1.0f * other.transform.localScale.y;
+                other.transform.Translate(0, add, 0);
                 break;
             case "LightningBox":
-                subtract = 0.5f + 0.5f * other.transform.localScale.y;
-                other.transform.Translate(0, -subtract, 0);
-                // transform.position = new Vector3(transform.position.x, other.transform.position.y + subtract, 0);
+                add = 0.5f * transform.localScale.y + 0.5f * other.transform.localScale.y;
+                other.transform.Translate(0, add, 0);
+                break;
+        }
+    }
+    private void OnCollisionExit(Collision other)
+    {
+        switch (other.collider.tag)
+        {
+            case "PushBlock":
+                other.rigidbody.velocity = new Vector3(0, -4.0f * speed, 0);
+                break;
+            case "LightningBox":
+                other.rigidbody.velocity = new Vector3(0, -4.0f * speed, 0);
                 break;
         }
     }

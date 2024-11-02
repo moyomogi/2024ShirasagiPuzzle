@@ -22,7 +22,7 @@ public class EdgeClimbModule : GroundedAnimatedAbilityModule {
         transform.position = info.GetEdgePoint();
         transform.parent = info.GetEdgeTransform();
         if (m_ReferencePoint == null)
-        { 
+        {
             m_ReferencePoint = new MovingColPoint();
         }
         m_ReferencePoint.m_Transform = transform;
@@ -49,14 +49,14 @@ public class EdgeClimbModule : GroundedAnimatedAbilityModule {
             if (m_ControlledCollider.IsGrounded())
             {
                 return false;
-            }   
+            }
             if (!m_ControlledCollider.IsTouchingEdge())
             {
                 return false;
             }
             CEdgeCastInfo info = m_ControlledCollider.GetEdgeCastInfo();
             if (GetDirInput("Move").m_Direction == DirectionInput.Direction.Up || GetDirInput("Move").IsInThisDirection(-info.GetWallNormal()))
-            { 
+            {
                 float angle = Vector3.Angle(info.GetEdgeNormal(), Vector3.up);
                 if (angle >= m_ControlledCollider.GetMaxGroundedAngle())
                 {
@@ -69,9 +69,7 @@ public class EdgeClimbModule : GroundedAnimatedAbilityModule {
                     return true;
                 }
             }
-        }
-        else
-        {
+        } else {
             //If the referencepoint slope is too steep to cling on to (during motion), interrupt movement
             float angle = Vector3.Angle(m_ReferencePoint.m_Transform.up, Vector3.up);
             if (angle >= m_ControlledCollider.GetMaxGroundedAngle())
@@ -131,7 +129,7 @@ public class EdgeClimbModule : GroundedAnimatedAbilityModule {
         newNode.ApplyEntireMovement(copy);
     }
 
-    //Get the name of the animation state that should be playing for this module. 
+    //Get the name of the animation state that should be playing for this module.
     public override string GetSpriteState(){
         if (Time.time - m_StartTime < m_MoveUpTime)
         {

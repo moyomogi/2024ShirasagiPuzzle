@@ -46,14 +46,12 @@ public class AbilityModuleManager : MonoBehaviour {
             if (module != null)
             {
                 module.SetLocked(a_List.m_List[i].m_Lock);
-            }
-            else
-            {
+            } else {
                 Debug.Log("Trying to unlock module with name " + a_List.m_List[i].m_AbilityName + " but this ability cannot be found on the character");
             }
         }
     }
-    
+
     public void InitAllModules(CharacterControllerBase a_CharacterController)
     {
         m_ModuleParent = (new GameObject()).transform;
@@ -117,7 +115,7 @@ public class AbilityModuleManager : MonoBehaviour {
     public void FixedUpdateCurrentModule()
     {
         if (m_CurrentlyUsedModule != null)
-        { 
+        {
             m_CurrentlyUsedModule.FixedUpdateModule();
             m_CurrentlyUsedModule.PlaceMovingColPoint();
         }

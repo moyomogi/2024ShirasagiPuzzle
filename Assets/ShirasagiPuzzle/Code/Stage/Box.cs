@@ -17,7 +17,7 @@ public class Box : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = StageController.instance._player.transform;
 
         fixedZPosition = transform.position.z;
 

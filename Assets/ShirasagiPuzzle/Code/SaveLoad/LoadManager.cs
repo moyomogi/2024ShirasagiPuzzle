@@ -34,7 +34,6 @@ public static class LoadManager
         SceneManager.LoadScene(saveData.sceneName);
         // }
 
-        // GameObject player = GameObject.FindGameObjectWithTag("Player");
         GameManager.instance.playerPosition = saveData.playerPosition;
         // Debug.Log($"(L) x: {saveData.playerPosition[0]}, y: {saveData.playerPosition[1]}");
 

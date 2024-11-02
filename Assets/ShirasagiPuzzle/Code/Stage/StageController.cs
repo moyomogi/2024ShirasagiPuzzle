@@ -1,19 +1,42 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.IO;
 
 public class StageController : MonoBehaviour
 {
+    public static StageController instance { get; private set; }
+
     // public GameObject gameoverText;
-    private GameObject _player;
+    public GameObject _player;
     // private SpriteRenderer _player_sr;
     // public BossScript boss;
     // public GameObject gameClearUI;
 
-    private void Start()
+    private void Awake()
     {
         _player = GameObject.FindGameObjectWithTag("Player");
+        if (_player == null)
+        {
+            GameManager.instance.shouldLoad = true;
+        }
+        if (!instance)
+        {
+            // 未生成
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            // 生成済み
+            Destroy(gameObject);
+        }
+    }
+
+    private void Start()
+    {
         if (_player == null)
         {
             Debug.Log("_player == null");
