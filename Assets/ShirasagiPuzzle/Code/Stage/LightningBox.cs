@@ -9,13 +9,14 @@ public class LightningBox : Elec
     private Collider boxCollider;
 
     public float pickUpDistance = 1.5f; // 変更可能な持ち上げ距離
-  
+
     private float fixedZPosition;
 
     // プレイヤーが現在持っているBoxの参照を保持する静的変数
     private static LightningBox heldBox;
+    private Renderer _renderer;
 
-    void Start()
+    public override void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
@@ -23,17 +24,18 @@ public class LightningBox : Elec
 
 
 
-            // Boxのコライダーを取得
-            boxCollider = GetComponent<Collider>();
+        // Boxのコライダーを取得
+        boxCollider = transform.Find("Wall").gameObject.GetComponent<Collider>();
         if (boxCollider == null)
         {
             Debug.LogWarning("Collider not found on Box object!");
         }
-        Renderer renderer = GetComponent<Renderer>();
+        _renderer = GetComponent<Renderer>();
 
-        if (renderer != null)
+        if (_renderer != null)
         {
-            renderer.material.color = Color.yellow;
+            _renderer.material.color = Color.cyan;
+            // _renderer.material.color = Color.yellow;
         }
         else
         {
@@ -77,7 +79,7 @@ public class LightningBox : Elec
         if (isHeld)
         {
             // プレイヤーの上に配置する
-            transform.position = new Vector3(player.position.x, player.position.y + 2f, fixedZPosition);
+            transform.position = new Vector3(player.position.x, player.position.y + 2.0f, fixedZPosition);
         }
         else
         {
@@ -87,5 +89,13 @@ public class LightningBox : Elec
 
     }
 
+    public override void TurnOff()
+    {
+        if (_renderer != null) _renderer.material.color = Color.cyan;
+    }
+    public override void TurnOn()
+    {
+        if (_renderer != null) _renderer.material.color = Color.yellow;
+    }
 
 }

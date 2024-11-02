@@ -11,7 +11,7 @@ public class Elec : MonoBehaviour
     // [SerializeField] BoxCollider boxCol;
     SpriteRenderer sr;
 
-    private void Start()
+    public virtual void Start()
     {
         sr = gameObject.GetComponent<SpriteRenderer>();
         TurnOff();
