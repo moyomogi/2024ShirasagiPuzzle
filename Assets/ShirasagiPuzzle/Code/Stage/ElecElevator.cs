@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
 
-public class ElecElevator : Elec
+public class ElecElevator : MonoBehaviour
 {
     private Renderer blockRenderer;
     private Color initialColor;
@@ -23,15 +23,15 @@ public class ElecElevator : Elec
     private void Start()
     {
         blockRenderer = GetComponent<Renderer>();
-        //initialColor = blockRenderer.material.color;
-        //initialPosition = transform.position;
+        initialColor = blockRenderer.material.color;
+        initialPosition = transform.position;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            //blockRenderer.material.color = Color.yellow;//通電の仕方に悩んだので、一旦マテリアルの色を黄色にするだけにとどめました
+            blockRenderer.material.color = Color.yellow;//通電の仕方に悩んだので、一旦マテリアルの色を黄色にするだけにとどめました
             isMoving = true;
             collision.transform.SetParent(transform);
         }
@@ -41,7 +41,7 @@ public class ElecElevator : Elec
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            //blockRenderer.material.color = initialColor;
+            blockRenderer.material.color = initialColor;
             isMoving = false;
             collision.transform.SetParent(null);
         }
