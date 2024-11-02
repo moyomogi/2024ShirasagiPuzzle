@@ -18,7 +18,7 @@ public class Void : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player"|| other.gameObject.tag == "Box")
+        if (other.gameObject.tag == "Player"|| other.gameObject.tag == "LightningBox")
         {
             target = other.gameObject.transform.position;
             target.x = warpPoint.x;
