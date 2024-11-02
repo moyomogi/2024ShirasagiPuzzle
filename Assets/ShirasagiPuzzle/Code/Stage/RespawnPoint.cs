@@ -9,6 +9,7 @@ public class RespawnPoint : MonoBehaviour
     SpriteRenderer sr;
     private bool isTouched = false;
     public Vector3 pos;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +38,7 @@ public class RespawnPoint : MonoBehaviour
                 respawnManager = obj.GetComponent<RespawnManager>();
                 respawnManager.respos.x = pos.x;
                 respawnManager.respos.y = pos.y;
+                GetComponent<AudioSource>().Play();
             }
         }    
     }
