@@ -17,7 +17,6 @@ public class Elec : MonoBehaviour
         TurnOff();
         // obj = this.gameObject.name.Substring(0, 3);
         // if (obj == "Inv") boxCol.enabled = false;
-        //Debug.Log(obj);
     }
 
     // virtual-override https://yuumekou.net/csharp-guide-5-4/
@@ -48,6 +47,9 @@ public class Elec : MonoBehaviour
             {
                 case "Elec" or "ElecBackground":
                     collides = true;
+                    break;
+                case "Player":
+                    if (sr.sprite == imageOn) collides = true;
                     break;
             }
         }

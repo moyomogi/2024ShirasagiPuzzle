@@ -2,13 +2,16 @@
 # This .gitignore file should be placed at the root of your Unity project directory
 #
 # Get latest from https://github.com/github/gitignore/blob/master/Unity.gitignore
-#
+!/Library/EditorUserBuildSettings.asset
+
 /[Bb]uild/
 /[Bb]uilds/
-/[Ll]ibrary/
 /[Ll]ogs/
 /[Mm]emoryCaptures/
 /[Oo]bj/
+
+/[Ll]ibrary/*
+!/Library/EditorUserBuildSettings.asset
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
@@ -57,20 +60,18 @@ sysinfo.txt
 
 # Crashlytics generated file
 crashlytics-build.properties
-
 UserSettings/Layouts
 
 # moyomogi
-# Folders
-/.vscode/
-/[Tt]emp/
 # ビルドは Build フォルダにて行ってください
 # また、共有したくないファイルは Build フォルダに入れるか、この .gitignore に追記してください
 /[Bb]uild/
+
+/.vscode/
+/[Tt]emp/
 /UserSettings/
 .vsconfig
 
-# Files
 *.sh
 *.py
 input.md

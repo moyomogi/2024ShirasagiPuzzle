@@ -11,11 +11,11 @@ public class GameManager : MonoBehaviour
     // GameManager とは、Scene を移動しても消滅させたくない変数を置く場所です
     public static GameManager instance { get; private set; }
 
-    private string bgmName = "";
+    private string curBgmName = "";
     public SerializableDictionary<string, AudioClip> bgmDict;
     private AudioSource bgmAudioSource;
     public SerializableDictionary<string, AudioClip> soundDict;
-    private AudioSource soundAudioSource;
+    private Dictionary<string, AudioSource> soundAudioSourceDict = new Dictionary<string, AudioSource>();
 
     public bool shouldLoad = false;
     public bool hasKey = false;
@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
         bgmAudioSource = gameObject.AddComponent<AudioSource>();
-        soundAudioSource = gameObject.AddComponent<AudioSource>();
+        // soundAudioSource = gameObject.AddComponent<AudioSource>();
     }
 
     public void Init()
@@ -68,10 +68,10 @@ public class GameManager : MonoBehaviour
                 newBgmName = "osananajimi";
                 break;
         }
-        if (bgmName != newBgmName)
+        if (curBgmName != newBgmName)
         {
-            bgmName = newBgmName;
-            PlayBGM(bgmName);
+            curBgmName = newBgmName;
+            PlayBGM(curBgmName);
         }
 
         // If there is no save data file, save the game
@@ -119,7 +119,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Debug.LogError($"bgmDict にキー {bgmName} の要素がありません");
+            Debug.LogError($"bgmDict にキー {curBgmName} の要素がありません");
         }
     }
     // 効果音: ループしない、重複する
@@ -127,10 +127,16 @@ public class GameManager : MonoBehaviour
     {
         if (soundDict.ContainsKey(soundName))
         {
-            soundAudioSource.clip = soundDict[soundName];
-            soundAudioSource.loop = false;
-            soundAudioSource.volume = 0.8f;
-            soundAudioSource.Play();
+            if (!soundAudioSourceDict.ContainsKey(soundName))
+            {
+                AudioSource soundAudioSource = gameObject.AddComponent<AudioSource>();
+                soundAudioSourceDict.Add(soundName, soundAudioSource);
+            }
+            // Debug.Log($"PlaySound {soundName}");
+            soundAudioSourceDict[soundName].clip = soundDict[soundName];
+            soundAudioSourceDict[soundName].loop = false;
+            soundAudioSourceDict[soundName].volume = 0.64f;
+            soundAudioSourceDict[soundName].Play();
         }
         else
         {
@@ -141,9 +147,7 @@ public class GameManager : MonoBehaviour
 
 // https://zenn.dev/tmb/articles/9b4c532da8d467
 [Serializable]
-public class SerializableDictionary<TKey, TValue> :
-    Dictionary<TKey, TValue>,
-    ISerializationCallbackReceiver
+public class SerializableDictionary<TKey, TValue> : Dictionary<TKey, TValue>, ISerializationCallbackReceiver
 {
     [Serializable]
     public class Pair
@@ -157,27 +161,19 @@ public class SerializableDictionary<TKey, TValue> :
             this.value = value;
         }
     }
-
     [SerializeField]
     private List<Pair> _list = null;
-
     void ISerializationCallbackReceiver.OnAfterDeserialize()
     {
         Clear();
         foreach (Pair pair in _list)
         {
-            if (ContainsKey(pair.key))
-            {
-                continue;
-            }
+            if (ContainsKey(pair.key)) continue;
             Add(pair.key, pair.value);
         }
     }
-
-    void ISerializationCallbackReceiver.OnBeforeSerialize()
-    {
-        // 処理なし
-    }
+    // 処理なし
+    void ISerializationCallbackReceiver.OnBeforeSerialize() { }
 }
 
 // グループ分け

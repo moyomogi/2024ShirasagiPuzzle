@@ -82,7 +82,6 @@ public class Box : MonoBehaviour
             // Z軸を固定したまま、現在のX, Y座標を維持する
             transform.position = new Vector3(transform.position.x, transform.position.y, fixedZPosition);
         }
-        
     }
 
     public void ApplyPaint(Color newColor)

@@ -20,15 +20,4 @@ public class InvisBlock : Elec
         base.SetImageOn();
         if (_Wall != null) _Wall.gameObject.SetActive(true);
     }
-
-    // public override void OnTriggerStay(Collider otherCollider)
-    // {
-    //     var other = otherCollider.GetComponent<Collider>();
-    //     if (other.tag == "Elec")
-    //     {
-    //         int thisId = this.gameObject.GetInstanceID();
-    //         int otherId = other.gameObject.GetInstanceID();
-    //         ElecManager.instance.UfElecUniteByIds(thisId, otherId);
-    //     }
-    // }
 }
