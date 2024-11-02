@@ -34,17 +34,29 @@ public class ElecManager : MonoBehaviour
         elecInstanceIdToIdx = new Dictionary<int, int>();
         elecs = new List<Elec>();
 
-        GameObject[] elecGameObjs = GameObject.FindGameObjectsWithTag("Elec");
-        foreach (GameObject elecGameObj in elecGameObjs)
+        // string[] elecTags = { "Elec", "ElecBackground", "LightningBox" };
+        // string[] elecTags = { "Elec", "ElecBackground", "LightningBox" };
+        string[] elecTags = { "Elec", "ElecBackground" };
+        foreach (string elecTag in elecTags)
         {
-            elecs.Add(elecGameObj.GetComponent<Elec>());
+            GameObject[] elecGameObjs = GameObject.FindGameObjectsWithTag(elecTag);
+            foreach (GameObject elecGameObj in elecGameObjs)
+            {
+                elecs.Add(elecGameObj.GetComponent<Elec>());
+            }
         }
 
-        GameObject[] elecBackgroundGameObjs = GameObject.FindGameObjectsWithTag("ElecBackground");
-        foreach (GameObject elecGameObj in elecBackgroundGameObjs)
-        {
-            elecs.Add(elecGameObj.GetComponent<Elec>());
-        }
+        // GameObject[] elecGameObjs = GameObject.FindGameObjectsWithTag("Elec");
+        // foreach (GameObject elecGameObj in elecGameObjs)
+        // {
+        //     elecs.Add(elecGameObj.GetComponent<Elec>());
+        // }
+
+        // GameObject[] elecBackgroundGameObjs = GameObject.FindGameObjectsWithTag("ElecBackground");
+        // foreach (GameObject elecGameObj in elecBackgroundGameObjs)
+        // {
+        //     elecs.Add(elecGameObj.GetComponent<Elec>());
+        // }
 
         // elecs = GameObject.FindGameObjectsWithTag("Elec").GetComponent<Elec>();
         for (int i = 0; i < elecs.Count; i++)

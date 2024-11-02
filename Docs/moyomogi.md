@@ -15,6 +15,7 @@
 ## SE
 
 - `Assets\ShirasagiPuzzle\Sounds\decide.wav`, 決定音, [ユーフルカ](https://youfulca.com/2022/08/06/rpgmaker_system/)
+- `Assets\ShirasagiPuzzle\Sounds\death.wav`, 死亡音, [ユーフルカ](https://youfulca.com/2022/08/06/rpgmaker_system/)
 - `Assets\ShirasagiPuzzle\Sounds\door.wav`, ドアに入る, [音人](https://on-jin.com/sound/sei.php)
 - `Assets\ShirasagiPuzzle\Sounds\key.wav`, 鍵取得 (ピッ), [音人](https://on-jin.com/sound/ta.php)
 - `Assets\ShirasagiPuzzle\Sounds\unlock.wav`, 鍵ドアの鍵開け, [効果音ラボ](https://soundeffect-lab.info/sound/various/)

@@ -52,7 +52,7 @@ public class CapsuleMovingColliderSolver : MonoBehaviour
             m_LastMovement = Vector3.zero;
             m_ColPoints.Clear();
             return;
-        }   
+        }
         //Determine the total movement for the current frame by colpoints
         Vector3 currentMovement = Vector3.zero;
         for (int i = 0; i < m_ColPoints.Count; i++)
@@ -71,7 +71,7 @@ public class CapsuleMovingColliderSolver : MonoBehaviour
         if (m_UseEscapeAcceleration && m_PreviousAmountOfColPoints > 0)
         {
             Vector3 velDifference = (currentMovement / Time.fixedDeltaTime) - (m_LastMovement / Time.fixedDeltaTime);
-            for (int i = 0; i < m_ColPoints.Count; i ++)
+            for (int i = 0; i < m_ColPoints.Count; i++)
             {
                 float normalDot = Vector3.Dot(m_ColPoints[i].m_Normal, velDifference);
                 if (normalDot > 0)
@@ -79,7 +79,7 @@ public class CapsuleMovingColliderSolver : MonoBehaviour
                     velDifference -= m_ColPoints[i].m_Normal * normalDot;
                 }
             }
-            
+
             if (velDifference.magnitude >= m_EscapeAcceleration)
             {
                 m_ColPoints.Clear();
@@ -99,7 +99,7 @@ public class CapsuleMovingColliderSolver : MonoBehaviour
             m_ControlledCollider.GetCapsuleTransform().SetUpDirection(rotationDifference * m_ControlledCollider.GetCapsuleTransform().GetUpDirection());
             //Offset for rotation
             if (m_ApplyRotationCorrection)
-            { 
+            {
                 Vector3 newRelativePoint = rotationDifference * m_ColPoints[i].m_PointRelativeToThis;
                 Vector3 relativeDifference = newRelativePoint - m_ColPoints[i].m_PointRelativeToThis;
                 m_ControlledCollider.GetCapsuleTransform().Move(-relativeDifference);
@@ -128,7 +128,7 @@ public class CapsuleMovingColliderSolver : MonoBehaviour
             Vector2 addVel = new Vector2(m_LastMovement.x, m_LastMovement.y) / Time.fixedDeltaTime;
             velocity += addVel;
 
-            
+
             m_ControlledCollider.SetVelocity(velocity);
         }
         m_LastMovement = Vector3.zero;
@@ -139,14 +139,14 @@ public class CapsuleMovingColliderSolver : MonoBehaviour
         Transform transform = new GameObject().transform;
         transform.position = a_Point;
         transform.parent = a_Parent;
-        
+
         MovingColPoint point = new MovingColPoint();
         point.m_Transform = transform;
         point.m_PrevPoint = transform.position;
         point.m_PrevRot = transform.rotation;
         point.m_Normal = a_Normal;
         point.m_PointRelativeToThis = a_Point - m_ControlledCollider.GetCapsuleTransform().GetPosition();
-        
+
         m_ColPoints.Add(point);
     }
 

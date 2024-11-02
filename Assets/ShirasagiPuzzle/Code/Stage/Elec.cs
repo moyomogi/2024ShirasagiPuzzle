@@ -36,9 +36,9 @@ public class Elec : MonoBehaviour
     {
         if (sr != null) sr.sprite = imageOn;
     }
-    private void OnTriggerStay(Collider otherCollider)
+    private void OnTriggerStay(Collider other)
     {
-        var other = otherCollider.GetComponent<Collider>();
+        // var other = otherCollider.GetComponent<Collider>();
         bool collides = false;
 
         if (this.tag == "ElecBackground")

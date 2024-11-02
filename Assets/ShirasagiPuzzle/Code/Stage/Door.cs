@@ -5,22 +5,22 @@ using UnityEngine.SceneManagement;
 
 public class Door : MonoBehaviour
 {
-    public string SceneName;
+    // public string SceneName;
     public bool isLockDoor;
 
     bool collides = false, enters = false;
     float timeCount = 0.0f;
     const float SPEED = 2.4f;
-    // private int curLevel, maxLevel;
+    private int curLevel, maxLevel;
 
     void Start()
     {
-        if (SceneName == "")
-        {
-            Debug.LogError($"Set \"SceneName\"");
-        }
-        // curLevel = SceneManager.GetActiveScene().buildIndex;
-        // maxLevel = SceneManager.sceneCountInBuildSettings - 1;
+        // if (SceneName == "")
+        // {
+        //     Debug.LogError($"Set \"SceneName\"");
+        // }
+        curLevel = SceneManager.GetActiveScene().buildIndex;
+        maxLevel = SceneManager.sceneCountInBuildSettings - 1;
     }
 
     void Update()
@@ -29,7 +29,20 @@ public class Door : MonoBehaviour
         if (enters)
         {
             timeCount += Time.deltaTime;
-            if (timeCount * SPEED > 0.9f) SceneManager.LoadScene(SceneName);
+            if (timeCount * SPEED > 0.9f)
+            {
+                // SceneManager.LoadScene(SceneName);
+                if (curLevel < maxLevel)
+                {
+                    // ファイル > ビルド設定 > ビルドに含まれるシーン
+                    // に記載の順序でワープ
+                    SceneManager.LoadScene(curLevel + 1);
+                }
+                else
+                {
+                    Debug.Log("最後のステージです");
+                }
+            }
         }
         else if (collides && (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)))
         {

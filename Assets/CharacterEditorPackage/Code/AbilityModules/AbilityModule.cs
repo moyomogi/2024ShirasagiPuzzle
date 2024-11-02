@@ -30,6 +30,7 @@ public class AbilityModule : MonoBehaviour {
         return m_CharacterControllerBase.GetPlayerInput().DoesInputExist(a_Name);
     }
     //Called from within modules to get a directional input by name
+    // public DirectionInput GetDirInput(string a_Name)
     protected DirectionInput GetDirInput(string a_Name)
     {
         if (m_CharacterControllerBase == null)
@@ -120,7 +121,7 @@ public class AbilityModule : MonoBehaviour {
     {
         return true;
     }
-    
+
     public bool GetIsActive()
     {
         return m_IsActive;

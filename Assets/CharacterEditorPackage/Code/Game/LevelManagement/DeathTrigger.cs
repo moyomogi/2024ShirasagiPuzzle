@@ -14,7 +14,11 @@ public class DeathTrigger : MonoBehaviour {
             if (controlledCapsuleCollider.AreCollisionsActive())
             {
                 Debug.Log("Death triggered by: " + transform.name);
+
+                // moyomogi
+                GameManager.instance.PlaySound("death");
                 GameManager.instance.shouldLoad = true;
+
                 // if (InSceneLevelSwitcher.Get())
                 // {
                 //     Debug.Log("InSceneLevelSwitcher.Get(): " + InSceneLevelSwitcher.Get());

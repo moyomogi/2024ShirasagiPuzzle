@@ -14,17 +14,31 @@ public class RideButton : MonoBehaviour
     // }
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        // if (other.gameObject.CompareTag("Player"))
+        // {
+        //     ridden = true;
+        //     transform.localScale = new Vector3(2, 0.7f, 1);
+        // }
+        switch (other.tag)
         {
-            ridden = true;
-            transform.localScale = new Vector3(2, 0.7f, 1);
+            case "Player" or "PushBlock":
+                ridden = true;
+                transform.localScale = new Vector3(2, 0.7f, 1);
+                break;
         }
     }
     void OnTriggerExit(Collider other) {
-        if (other.gameObject.CompareTag("Player"))
+        // if (other.gameObject.CompareTag("Player"))
+        // {
+        //     ridden = false;
+        //     transform.localScale = Vector3.one * 2;
+        // }
+        switch (other.tag)
         {
-            ridden = false;
-            transform.localScale = Vector3.one * 2;
+            case "Player" or "PushBlock":
+                ridden = false;
+                transform.localScale = Vector3.one * 2;
+                break;
         }
     }
 }

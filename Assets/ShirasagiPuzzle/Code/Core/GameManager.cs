@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
     public bool shouldRepositionPlayer = false;
     public float[] playerPosition = new float[3];
 
+    private string prevSceneName = "";
+
     // Awake には初期化処理を書く (Start より先に実行されるため)
     private void Awake()
     {
@@ -55,8 +57,10 @@ public class GameManager : MonoBehaviour
     // Update は描画前に実行される
     private void Update()
     {
+        string curSceneName = SceneManager.GetActiveScene().name;
+
         string newBgmName = "";
-        switch (SceneManager.GetActiveScene().name)
+        switch (curSceneName)
         {
             case "TitleScene":
                 newBgmName = "anohi";
@@ -93,6 +97,11 @@ public class GameManager : MonoBehaviour
             Application.Quit();
             return;
         }
+        if (prevSceneName != curSceneName && curSceneName != "TitleScene")
+        {
+            SaveManager.Save();
+        }
+        prevSceneName = curSceneName;
 #if UNITY_EDITOR
         // P で Save (For debugging)
         if (Input.GetKeyDown(KeyCode.P))
@@ -101,7 +110,17 @@ public class GameManager : MonoBehaviour
         }
 #endif
         // R で Retry
-        if (Input.GetKeyDown(KeyCode.R) || GameManager.instance.shouldLoad)
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            GameManager.instance.shouldLoad = true;
+        }
+        // Q で自害
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            GameManager.instance.PlaySound("death");
+            GameManager.instance.shouldLoad = true;
+        }
+        if (GameManager.instance.shouldLoad)
         {
             LoadManager.Load();
         }

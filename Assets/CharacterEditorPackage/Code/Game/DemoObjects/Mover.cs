@@ -4,13 +4,13 @@ using UnityEngine.SceneManagement;
 //--------------------------------------------------------------------
 //Small class to move an object back and forth along a path. Used for moving platforms in levels
 //--------------------------------------------------------------------
-public class Mover: MonoBehaviour
+public class Mover : MonoBehaviour
 {
     [SerializeField] float m_MovementSpeed = 0.0f;
     [SerializeField] float m_MaxDistance = 0.0f;
     [SerializeField] Vector3 m_Direction;
-    [SerializeField] AnimationCurve m_MoveCurve = null; 
-    [SerializeField] bool m_MoveAlignedToRotation = false; 
+    [SerializeField] AnimationCurve m_MoveCurve = null;
+    [SerializeField] bool m_MoveAlignedToRotation = false;
 
     protected float m_Time;
     protected Vector3 m_StartPosition;
