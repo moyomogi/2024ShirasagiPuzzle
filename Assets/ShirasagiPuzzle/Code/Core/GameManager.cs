@@ -68,6 +68,9 @@ public class GameManager : MonoBehaviour
             case "Stage1_1":
                 newBgmName = "voyage";
                 break;
+            case "Stage3_1":
+                newBgmName = "starry city";
+                break;
             default:
                 newBgmName = "osananajimi";
                 break;

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LightningBox : MonoBehaviour
+public class LightningBox : Elec
 {
     private Transform player;
     private bool isHeld = false;
@@ -29,6 +29,17 @@ public class LightningBox : MonoBehaviour
         {
             Debug.LogWarning("Collider not found on Box object!");
         }
+        Renderer renderer = GetComponent<Renderer>();
+
+        if (renderer != null)
+        {
+            renderer.material.color = Color.yellow;
+        }
+        else
+        {
+            Debug.LogWarning("Renderer not found!");
+        }
+
     }
 
     void Update()

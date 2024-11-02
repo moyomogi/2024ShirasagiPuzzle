@@ -34,29 +34,24 @@ public class ElecManager : MonoBehaviour
         elecInstanceIdToIdx = new Dictionary<int, int>();
         elecs = new List<Elec>();
 
-        // string[] elecTags = { "Elec", "ElecBackground", "LightningBox" };
-        // string[] elecTags = { "Elec", "ElecBackground", "LightningBox" };
-        string[] elecTags = { "Elec", "ElecBackground" };
+        string[] elecTags = { "Elec", "ElecBackground", "LightningBox" };
         foreach (string elecTag in elecTags)
         {
             GameObject[] elecGameObjs = GameObject.FindGameObjectsWithTag(elecTag);
             foreach (GameObject elecGameObj in elecGameObjs)
             {
-                elecs.Add(elecGameObj.GetComponent<Elec>());
+                Elec elecComponent = elecGameObj.GetComponent<Elec>();
+                // Check if the component is not null before adding
+                if (elecComponent != null)
+                {
+                    elecs.Add(elecComponent);
+                }
+                else
+                {
+                    Debug.Log($"GameObject with tag {elecTag} does not have an Elec component.");
+                }
             }
         }
-
-        // GameObject[] elecGameObjs = GameObject.FindGameObjectsWithTag("Elec");
-        // foreach (GameObject elecGameObj in elecGameObjs)
-        // {
-        //     elecs.Add(elecGameObj.GetComponent<Elec>());
-        // }
-
-        // GameObject[] elecBackgroundGameObjs = GameObject.FindGameObjectsWithTag("ElecBackground");
-        // foreach (GameObject elecGameObj in elecBackgroundGameObjs)
-        // {
-        //     elecs.Add(elecGameObj.GetComponent<Elec>());
-        // }
 
         // elecs = GameObject.FindGameObjectsWithTag("Elec").GetComponent<Elec>();
         for (int i = 0; i < elecs.Count; i++)
@@ -70,6 +65,8 @@ public class ElecManager : MonoBehaviour
         int playerId = player.gameObject.GetInstanceID();
         // Debug.Log($"{playerId}");
         elecInstanceIdToIdx.Add(playerId, elecs.Count);
+
+
     }
 
     private void InitUfElec()
