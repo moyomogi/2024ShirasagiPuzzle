@@ -19,7 +19,7 @@ public static class LoadManager
         if (!File.Exists(saveFilePath))
         {
             Debug.Log("No save data");
-            SceneManager.LoadScene(GameManager.instance.FIRST_SCENE_NAME);
+            SceneManager.LoadScene(GameManager.FIRST_SCENE_NAME);
             // SceneManager.LoadScene("Stage1_1");
             return;
         }
