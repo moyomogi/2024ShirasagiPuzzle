@@ -19,7 +19,8 @@ public static class LoadManager
         if (!File.Exists(saveFilePath))
         {
             Debug.Log("No save data");
-            SceneManager.LoadScene("Stage1_1");
+            SceneManager.LoadScene(GameManager.instance.FIRST_SCENE_NAME);
+            // SceneManager.LoadScene("Stage1_1");
             return;
         }
         BinaryFormatter bf = new BinaryFormatter();

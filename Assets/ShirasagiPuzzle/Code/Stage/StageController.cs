@@ -39,8 +39,12 @@ public class StageController : MonoBehaviour
     {
         if (_player == null)
         {
-            Debug.Log("_player == null");
-            return;
+            _player = GameObject.FindGameObjectWithTag("Player");
+            if (_player == null)
+            {
+                Debug.Log("_player == null");
+                return;
+            }
         }
         // GameObject sa = _player.transform.Find("SpriteAnimator").gameObject;
         // if (sa == null)
@@ -63,14 +67,14 @@ public class StageController : MonoBehaviour
     {
         GameManager.instance.shouldLoad = true;
     }
-    private void Update()
+    private void FixedUpdate()
     {
         if (_player == null)
         {
             Debug.LogError("_player == null");
             return;
         }
-        if (_player.transform.position.y < -20.5)
+        if (_player.transform.position.y < -20)
         {
             GameManager.instance.PlaySound("death");
             GameManager.instance.shouldLoad = true;

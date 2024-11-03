@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
 
     private string prevSceneName = "";
 
+    public const FIRST_SCENE_NAME = "Stage5_1";
+
     // Awake には初期化処理を書く (Start より先に実行されるため)
     private void Awake()
     {
@@ -65,14 +67,14 @@ public class GameManager : MonoBehaviour
             case "TitleScene":
                 newBgmName = "anohi";
                 break;
-            case "Stage1_1":
-                newBgmName = "voyage";
-                break;
-            case "Stage3_1":
-                newBgmName = "starry city";
+            // case "Stage1_1":
+            //     newBgmName = "voyage";
+            //     break;
+            case "ClearScene":
+                newBgmName = "osananajimi";
                 break;
             default:
-                newBgmName = "osananajimi";
+                newBgmName = "starry city";
                 break;
         }
         if (curBgmName != newBgmName)
