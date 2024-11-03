@@ -21,22 +21,15 @@ public partial class ControlledCapsuleCollider : ControlledCollider
         // moyomogi
         if (GameManager.instance != null && GameManager.instance.shouldRepositionPlayer)
         {
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
-            if (player == null)
+            GameObject _player = GameObject.FindGameObjectWithTag("Player");
+            StageController.instance._player = _player;
+            if (_player == null)
             {
-                Debug.LogError("(LoadManager) Player タグの付いた GameObject が見つかりませんでした");
+                Debug.LogError("(ControlledCapsuleCollider) Player タグの付いた GameObject が見つかりませんでした");
             }
             else
             {
-                // foreach (string gemName in GameManager.instance.obtainedGemNames)
-                // {
-                //     GameObject gemObj = GameObject.Find(gemName);
-                //     if (gemObj != null)
-                //     {
-                //         gemObj.SetActive(false);
-                //     }
-                // }
-                player.transform.position = new Vector3(GameManager.instance.playerPosition[0], GameManager.instance.playerPosition[1], GameManager.instance.playerPosition[2]);
+                _player.transform.position = new Vector3(GameManager.instance.playerPosition[0], GameManager.instance.playerPosition[1], GameManager.instance.playerPosition[2]);
             }
             GameManager.instance.shouldRepositionPlayer = false;
         }

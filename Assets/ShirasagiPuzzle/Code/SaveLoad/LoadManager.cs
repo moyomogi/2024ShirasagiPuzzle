@@ -19,7 +19,8 @@ public static class LoadManager
         if (!File.Exists(saveFilePath))
         {
             Debug.Log("No save data");
-            SceneManager.LoadScene("Stage1_1");
+            SceneManager.LoadScene(GameManager.FIRST_SCENE_NAME);
+            // SceneManager.LoadScene("Stage1_1");
             return;
         }
         BinaryFormatter bf = new BinaryFormatter();
@@ -34,7 +35,6 @@ public static class LoadManager
         SceneManager.LoadScene(saveData.sceneName);
         // }
 
-        // GameObject player = GameObject.FindGameObjectWithTag("Player");
         GameManager.instance.playerPosition = saveData.playerPosition;
         // Debug.Log($"(L) x: {saveData.playerPosition[0]}, y: {saveData.playerPosition[1]}");
 

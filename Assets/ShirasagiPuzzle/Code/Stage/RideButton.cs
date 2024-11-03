@@ -5,14 +5,13 @@ using UnityEngine;
 public class RideButton : MonoBehaviour
 {
     public bool ridden = false;
+    private float scale;
 
-    // void FixedUpdate()
-    // {
-    //     // if (ridden) transform.localScale = new Vector3(2, 0.7f, 1);
-    //     // else transform.localScale = Vector3.one * 2;
+    void Start() {
+        scale = transform.localScale.x;
+    }
 
-    // }
-    void OnTriggerEnter(Collider other)
+    void OnTriggerStay(Collider other)
     {
         // if (other.gameObject.CompareTag("Player"))
         // {
@@ -21,13 +20,14 @@ public class RideButton : MonoBehaviour
         // }
         switch (other.tag)
         {
-            case "Player" or "PushBlock" or "LightningBox" or "LightningBlock":
+            case "Player" or "PushBlock" or "LightningBox":
                 ridden = true;
-                transform.localScale = new Vector3(2, 0.7f, 1);
+                transform.localScale = new Vector3(scale, 0.35f * scale, 1);
                 break;
         }
     }
-    void OnTriggerExit(Collider other) {
+    void OnTriggerExit(Collider other)
+    {
         // if (other.gameObject.CompareTag("Player"))
         // {
         //     ridden = false;
@@ -35,9 +35,9 @@ public class RideButton : MonoBehaviour
         // }
         switch (other.tag)
         {
-            case "Player" or "PushBlock":
+            case "Player" or "PushBlock" or "LightningBox":
                 ridden = false;
-                transform.localScale = Vector3.one * 2;
+                transform.localScale = Vector3.one * scale;
                 break;
         }
     }

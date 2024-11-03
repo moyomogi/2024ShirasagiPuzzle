@@ -56,7 +56,7 @@ public class TitleMenuManager : MonoBehaviour
         Debug.Log($"delete {Application.persistentDataPath}/save/data.dat");
 
         GameManager.instance.Init();
-        SceneManager.LoadScene("Stage1_1");
+        SceneManager.LoadScene(GameManager.FIRST_SCENE_NAME);
     }
     // Load Game
     public void OnClickLoadGameButton()
