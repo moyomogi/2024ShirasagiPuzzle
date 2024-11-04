@@ -10,16 +10,19 @@ public class Box : MonoBehaviour
 
     public float pickUpDistance = 1.5f; // 変更可能な持ち上げ距離
     public Color boxColor;
-    private float fixedZPosition;
+    private float fixedXPosition, fixedZPosition;
 
     // プレイヤーが現在持っているBoxの参照を保持する静的変数
     private static Box heldBox;
+    private Rigidbody _rb;
 
     void Start()
     {
-        player = StageController.instance._player.transform;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
 
+        fixedXPosition = transform.position.x;
         fixedZPosition = transform.position.z;
+        _rb = transform.GetComponent<Rigidbody>();
 
         // レンダラーから色を初期化
         Renderer renderer = GetComponent<Renderer>();
@@ -50,6 +53,8 @@ public class Box : MonoBehaviour
             {
                 Debug.Log("捨てる");
                 isHeld = false;
+                _rb.velocity = Vector3.zero;
+                fixedXPosition = transform.position.x;
                 heldBox = null; // 持っているBoxを空にする
                 // 捨てたときにコライダーを有効にする
                 if (boxCollider != null)
@@ -75,12 +80,13 @@ public class Box : MonoBehaviour
         if (isHeld)
         {
             // プレイヤーの上に配置する
-            transform.position = new Vector3(player.position.x, player.position.y + 2f, fixedZPosition);
+            transform.position = new Vector3(player.position.x, player.position.y + 2.0f, fixedZPosition);
         }
         else
         {
             // Z軸を固定したまま、現在のX, Y座標を維持する
-            transform.position = new Vector3(transform.position.x, transform.position.y, fixedZPosition);
+            transform.position = new Vector3(fixedXPosition, transform.position.y, fixedZPosition);
+            _rb.velocity = new Vector3(0, Mathf.Max(_rb.velocity.y, -10.0f), 0);
         }
     }
 

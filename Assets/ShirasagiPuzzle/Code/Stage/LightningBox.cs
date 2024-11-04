@@ -10,19 +10,20 @@ public class LightningBox : Elec
 
     public float pickUpDistance = 1.5f; // 変更可能な持ち上げ距離
 
-    private float fixedZPosition;
+    private float fixedXPosition, fixedZPosition;
 
     // プレイヤーが現在持っているBoxの参照を保持する静的変数
     private static LightningBox heldBox;
     private Renderer _renderer;
+    private Rigidbody _rb;
 
     public override void Start()
     {
-        player = StageController.instance._player.transform;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
 
+        fixedXPosition = transform.position.x;
+        // fixedYPosition = transform.position.y;
         fixedZPosition = transform.position.z;
-
-
 
         // Boxのコライダーを取得
         boxCollider = transform.Find("Wall").gameObject.GetComponent<Collider>();
@@ -31,11 +32,12 @@ public class LightningBox : Elec
             Debug.LogWarning("Collider not found on Box object!");
         }
         _renderer = GetComponent<Renderer>();
+        _rb = transform.GetComponent<Rigidbody>();
 
         if (_renderer != null)
         {
-            _renderer.material.color = Color.cyan;
-            // _renderer.material.color = Color.yellow;
+            // _renderer.material.color = Color.cyan;
+            _renderer.material.color = Color.yellow;
         }
         else
         {
@@ -43,6 +45,18 @@ public class LightningBox : Elec
         }
 
     }
+
+    // ShockBlock 明示用
+    // public void Red()
+    // {
+    //     if (_renderer == null) _renderer = GetComponent<Renderer>();
+    //     _renderer.material.color = Color.red;
+    // }
+    // public void NotRed()
+    // {
+    //     if (_renderer == null) _renderer = GetComponent<Renderer>();
+    //     _renderer.material.color = Color.yellow;
+    // }
 
     void Update()
     {
@@ -54,6 +68,9 @@ public class LightningBox : Elec
             {
                 Debug.Log("捨てる");
                 isHeld = false;
+                _rb.velocity = Vector3.zero;
+                fixedXPosition = transform.position.x;
+                // fixedYPosition = transform.position.y;
                 heldBox = null; // 持っているBoxを空にする
                 // 捨てたときにコライダーを有効にする
                 if (boxCollider != null)
@@ -83,10 +100,13 @@ public class LightningBox : Elec
         }
         else
         {
-            // Z軸を固定したまま、現在のX, Y座標を維持する
-            transform.position = new Vector3(transform.position.x, transform.position.y, fixedZPosition);
-        }
+            // 新: XYZ軸固定
+            transform.position = new Vector3(fixedXPosition, transform.position.y, fixedZPosition);
 
+            _rb.velocity = new Vector3(0, Mathf.Max(_rb.velocity.y, -6.0f), 0);
+            // 旧: Z軸を固定したまま、現在のX, Y座標を維持する
+            // transform.position = new Vector3(transform.position.x, transform.position.y, fixedZPosition);
+        }
     }
 
     public override void TurnOff()

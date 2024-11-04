@@ -10,23 +10,23 @@ using System.Linq;
 public class SaveData
 {
     // 保存すべき内容
-    // - player.transform.position
+    // - _player.transform.position
     public float[] playerPosition = new float[3];
     public string sceneName = "";
     public SaveData()
     {
-        GameObject player = StageController.instance._player;
-        if (!player)
+        GameObject _player = GameObject.FindGameObjectWithTag("Player");
+        if (!_player)
         {
             // Debug.LogError("(SaveData) Player タグの付いた GameObject が見つかりませんでした");
         }
         else
         {
-            playerPosition[0] = player.transform.position.x;
-            playerPosition[1] = player.transform.position.y;
-            // playerPosition[2] = player.transform.position.z;
+            playerPosition[0] = _player.transform.position.x;
+            playerPosition[1] = _player.transform.position.y;
+            // playerPosition[2] = _player.transform.position.z;
             playerPosition[2] = 0;
-            // Debug.Log($"(S) x: {player.transform.position.x}, y: {player.transform.position.y}");
+            // Debug.Log($"(S) x: {_player.transform.position.x}, y: {_player.transform.position.y}");
         }
         sceneName = SceneManager.GetActiveScene().name;
     }

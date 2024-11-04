@@ -22,7 +22,6 @@ public partial class ControlledCapsuleCollider : ControlledCollider
         if (GameManager.instance != null && GameManager.instance.shouldRepositionPlayer)
         {
             GameObject _player = GameObject.FindGameObjectWithTag("Player");
-            StageController.instance._player = _player;
             if (_player == null)
             {
                 Debug.LogError("(ControlledCapsuleCollider) Player タグの付いた GameObject が見つかりませんでした");

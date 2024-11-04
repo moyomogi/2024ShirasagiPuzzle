@@ -21,7 +21,7 @@ public class Elevator_v2 : MonoBehaviour
         defaultPos = transform.position;
 
         _rb = transform.GetComponent<Rigidbody>();
-        GameObject _player = StageController.instance._player;
+        GameObject _player = GameObject.FindGameObjectWithTag("Player");
         _player_rb = _player.transform.GetComponent<Rigidbody>();
     }
 

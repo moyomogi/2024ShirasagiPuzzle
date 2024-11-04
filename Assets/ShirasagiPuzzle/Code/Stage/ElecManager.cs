@@ -35,6 +35,7 @@ public class ElecManager : MonoBehaviour
     {
         elecInstanceIdToIdx = new Dictionary<int, int>();
         elecs = new List<Elec>();
+        LightningIndices = new List<int>();
 
         string[] elecTags = { "Elec", "ElecBackground", "LightningBox" };
         foreach (string elecTag in elecTags)
@@ -66,8 +67,8 @@ public class ElecManager : MonoBehaviour
         // player は class Elec の継承が難しいため、別で処理
         int playerIdx = elecs.Count;
         LightningIndices.Add(playerIdx);
-        GameObject player = StageController.instance._player;
-        int playerId = player.gameObject.GetInstanceID();
+        GameObject _player = GameObject.FindGameObjectWithTag("Player");
+        int playerId = _player.gameObject.GetInstanceID();
         elecInstanceIdToIdx.Add(playerId, playerIdx);
 
         InitUfElec();
@@ -102,11 +103,11 @@ public class ElecManager : MonoBehaviour
         }
         for (int i = 0; i < elecs.Count; i++)
         {
-            Elec elec = elecs[i];
-            foreach (int idx in LightningIndices)
+            // Elec elec = elecs[i];
+            foreach (int j in LightningIndices)
             {
                 // 発電物体と同じグループなら光る
-                bool same = UfElecSameByIndices(i, idx);
+                bool same = UfElecSameByIndices(i, j);
                 isLightningList[i] = isLightningList[i] || same;
             }
         }

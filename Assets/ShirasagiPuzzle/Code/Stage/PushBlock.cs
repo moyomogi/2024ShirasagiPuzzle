@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PushBlock : MonoBehaviour
 {
-    public bool collides = false;
+    public bool collidesPlayer = false;
 
     // [SerializeField] ControlledCapsuleCollider m_ControlledCollider;
     // m_ControlledCollider = transform.GetComponent<ControlledCapsuleCollider>();
@@ -12,44 +12,54 @@ public class PushBlock : MonoBehaviour
     private CharacterControllerBase m_CharacterControllerBase;
     // private AbilityModule m_AbilityModule;
     private Rigidbody _rb;
+    private float prevX = 0.0f;
+
     private const string m_ModuleName = "PushBlock";
-    // private const float PUSH_SPEED = 10.0f;
-    private const float PUSH_SPEED = 18.0f;
+    private const float PUSH_SPEED = 14.0f;
 
     void Start()
     {
-        _player = StageController.instance._player;
+        _player = GameObject.FindGameObjectWithTag("Player");
         // m_AbilityModule = _player.GetComponent<AbilityModule>();
         m_CharacterControllerBase = _player.GetComponent<CharacterControllerBase>();
         // PlayerInput pi = m_CharacterControllerBase.GetPlayerInput().GetDirectionInput("Move");
         _rb = this.transform.GetComponent<Rigidbody>();
+
+        prevX = transform.position.x;
     }
     void Update()
     {
-        if (collides)
+        if (collidesPlayer)
         {
-            bool playerIsLeft = _player.transform.position.x < this.transform.position.x;
+            bool playerIsLeft = _player.transform.position.x < transform.position.x;
 
             // if ((playerIsLeft || Input.GetKeyDown(KeyCode.E)) && GetDirInput("Move").m_Direction == DirectionInput.Direction.Right)
             if (playerIsLeft && GetDirInput("Move").m_Direction == DirectionInput.Direction.Right)
             {
                 _rb.AddForce(new Vector3(PUSH_SPEED, 0, 0));
+                // 床埋まり回避
+                _rb.AddForce(new Vector3(0, 0.1f * PUSH_SPEED, 0));
             }
             // if ((!playerIsLeft || Input.GetKeyDown(KeyCode.E)) && GetDirInput("Move").m_Direction == DirectionInput.Direction.Left)
             if (!playerIsLeft && GetDirInput("Move").m_Direction == DirectionInput.Direction.Left)
             {
                 _rb.AddForce(new Vector3(-PUSH_SPEED, 0, 0));
+                // 床埋まり回避
+                _rb.AddForce(new Vector3(0, 0.1f * PUSH_SPEED, 0));
             }
+            prevX = transform.position.x;
+        } else {
+            transform.position = new Vector3(prevX, transform.position.y, 0);
+            _rb.velocity = new Vector3(0, Mathf.Min(0,0f, _rb.velocity.y), 0);
+            // _rb.AddForce(new Vector3(0, -0.1f * PUSH_SPEED, 0));
+            // _rb.AddForce(new Vector3(0, 0.1f * PUSH_SPEED, 0));
         }
-        // else {
-        //     _rb.velocity = new Vector3(0, -12.0f, 0);
-        // }
     }
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
-            collides = true;
+            collidesPlayer = true;
 
             // _rb.velocity = other.GetComponent<Rigidbody>().velocity;
             float add = 0.5f * transform.localScale.y + 1.0f * _player.transform.localScale.y - 6.0f;
@@ -60,30 +70,30 @@ public class PushBlock : MonoBehaviour
             );
         }
     }
-    void OnTriggerStay(Collider other)
-    {
-        switch (other.tag)
-        {
-            // 動く床
-            // csse "PushBlock":
-            // csse "LightningBox":
-            case "Wall":
-                // 水平方向
-                _rb.velocity = other.GetComponent<Rigidbody>().velocity;
-                float add = 0.5f * transform.localScale.y + 0.5f * other.transform.localScale.y - 6.0f;
-                transform.position = new Vector3(transform.position.x, other.transform.position.y + add, 0);
-                // 鉛直方向
-                // _rb.velocity = other.GetComponent<Rigidbody>().velocity;
-                // float add = 0.5f * transform.localScale.y + 0.5f * other.transform.localScale.y - 6.0f;
-                // transform.position = new Vector3(transform.position.x, other.transform.position.y + add, 0);
-                break;
-        }
-    }
+    // void OnTriggerStay(Collider other)
+    // {
+    //     switch (other.tag)
+    //     {
+    //         // 動く床
+    //         // csse "PushBlock":
+    //         // csse "LightningBox":
+    //         case "Wall":
+    //             // 水平方向
+    //             _rb.velocity = other.GetComponent<Rigidbody>().velocity;
+    //             float add = 0.5f * transform.localScale.y + 0.5f * other.transform.localScale.y - 6.0f;
+    //             transform.position = new Vector3(transform.position.x, other.transform.position.y + add, 0);
+    //             // 鉛直方向
+    //             // _rb.velocity = other.GetComponent<Rigidbody>().velocity;
+    //             // float add = 0.5f * transform.localScale.y + 0.5f * other.transform.localScale.y - 6.0f;
+    //             // transform.position = new Vector3(transform.position.x, other.transform.position.y + add, 0);
+    //             break;
+    //     }
+    // }
     void OnTriggerExit(Collider other)
     {
         if (other.tag == "Player")
         {
-            collides = false;
+            collidesPlayer = false;
             _rb.velocity = Vector3.zero;
         }
     }
